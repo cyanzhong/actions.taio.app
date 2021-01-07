@@ -1,0 +1,131 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "Preview Markdown using custom style sheets, update below two variables to try out other styles."
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "@import url(http:\/\/fonts.googleapis.com\/css?family=Inconsolata);\n@import url(http:\/\/fonts.googleapis.com\/css?family=PT+Sans);\n@import url(http:\/\/fonts.googleapis.com\/css?family=PT+Sans+Narrow:400,700);\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nnav,\nsection,\nsummary {\n  display: block;\n}\naudio,\ncanvas,\nvideo {\n  display: inline-block;\n}\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n[hidden] {\n  display: none;\n}\nhtml {\n  font-family: sans-serif;\n  -webkit-text-size-adjust: 100%;\n  -ms-text-size-adjust: 100%;\n}\nbody {\n  margin: 0;\n}\na:focus {\n  outline: thin dotted;\n}\na:active,\na:hover {\n  outline: 0;\n}\nh1 {\n  font-size: 2em;\n}\nabbr[title] {\n  border-bottom: 1px dotted;\n}\nb,\nstrong {\n  font-weight: bold;\n}\ndfn {\n  font-style: italic;\n}\nmark {\n  background: #ff0;\n  color: #000;\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, serif;\n  font-size: 1em;\n}\npre {\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}\nq {\n  quotes: \"\\201C\" \"\\201D\" \"\\2018\" \"\\2019\";\n}\nsmall {\n  font-size: 80%;\n}\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsup {\n  top: -0.5em;\n}\nsub {\n  bottom: -0.25em;\n}\nimg {\n  border: 0;\n}\nsvg:not(:root) {\n  overflow: hidden;\n}\nfigure {\n  margin: 0;\n}\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\nlegend {\n  border: 0;\n  padding: 0;\n}\nbutton,\ninput,\nselect,\ntextarea {\n  font-family: inherit;\n  font-size: 100%;\n  margin: 0;\n}\nbutton,\ninput {\n  line-height: normal;\n}\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  cursor: pointer;\n}\nbutton[disabled],\ninput[disabled] {\n  cursor: default;\n}\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  padding: 0;\n}\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  box-sizing: content-box;\n}\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\ntextarea {\n  overflow: auto;\n  vertical-align: top;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\nhtml {\n  font-family: 'PT Sans', sans-serif;\n}\npre,\ncode {\n  font-family: 'Inconsolata', sans-serif;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-family: 'PT Sans Narrow', sans-serif;\n  font-weight: 700;\n}\nhtml {\n  background-color: #eee8d5;\n  color: #657b83;\n  margin: 1em;\n}\nbody {\n  background-color: #fdf6e3;\n  margin: 0 auto;\n  max-width: 23cm;\n  border: 1pt solid #93a1a1;\n  padding: 1em;\n}\ncode {\n  background-color: #eee8d5;\n  padding: 2px;\n}\na {\n  color: #b58900;\n}\na:visited {\n  color: #cb4b16;\n}\na:hover {\n  color: #cb4b16;\n}\nh1 {\n  color: #d33682;\n}\nh2,\nh3,\nh4,\nh5,\nh6 {\n  color: #859900;\n}\npre {\n  background-color: #fdf6e3;\n  color: #657b83;\n  border: 1pt solid #93a1a1;\n  padding: 1em;\n  box-shadow: 5pt 5pt 8pt #eee8d5;\n}\npre code {\n  background-color: #fdf6e3;\n}\nh1 {\n  font-size: 2.8em;\n}\nh2 {\n  font-size: 2.4em;\n}\nh3 {\n  font-size: 1.8em;\n}\nh4 {\n  font-size: 1.4em;\n}\nh5 {\n  font-size: 1.3em;\n}\nh6 {\n  font-size: 1.15em;\n}\n.tag {\n  background-color: #eee8d5;\n  color: #d33682;\n  padding: 0 0.2em;\n}\n.todo,\n.next,\n.done {\n  color: #fdf6e3;\n  background-color: #dc322f;\n  padding: 0 0.2em;\n}\n.tag {\n  -webkit-border-radius: 0.35em;\n  -moz-border-radius: 0.35em;\n  border-radius: 0.35em;\n}\n.TODO {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #2aa198;\n}\n.NEXT {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #268bd2;\n}\n.ACTIVE {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #268bd2;\n}\n.DONE {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #859900;\n}\n.WAITING {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #cb4b16;\n}\n.HOLD {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #d33682;\n}\n.NOTE {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #d33682;\n}\n.CANCELLED {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #859900;\n}"
+        },
+        "name" : {
+          "value" : "Light"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "@import url(http:\/\/fonts.googleapis.com\/css?family=Inconsolata);\n@import url(http:\/\/fonts.googleapis.com\/css?family=PT+Sans);\n@import url(http:\/\/fonts.googleapis.com\/css?family=PT+Sans+Narrow:400,700);\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nnav,\nsection,\nsummary {\n  display: block;\n}\naudio,\ncanvas,\nvideo {\n  display: inline-block;\n}\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n[hidden] {\n  display: none;\n}\nhtml {\n  font-family: sans-serif;\n  -webkit-text-size-adjust: 100%;\n  -ms-text-size-adjust: 100%;\n}\nbody {\n  margin: 0;\n}\na:focus {\n  outline: thin dotted;\n}\na:active,\na:hover {\n  outline: 0;\n}\nh1 {\n  font-size: 2em;\n}\nabbr[title] {\n  border-bottom: 1px dotted;\n}\nb,\nstrong {\n  font-weight: bold;\n}\ndfn {\n  font-style: italic;\n}\nmark {\n  background: #ff0;\n  color: #000;\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, serif;\n  font-size: 1em;\n}\npre {\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}\nq {\n  quotes: \"\\201C\" \"\\201D\" \"\\2018\" \"\\2019\";\n}\nsmall {\n  font-size: 80%;\n}\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsup {\n  top: -0.5em;\n}\nsub {\n  bottom: -0.25em;\n}\nimg {\n  border: 0;\n}\nsvg:not(:root) {\n  overflow: hidden;\n}\nfigure {\n  margin: 0;\n}\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\nlegend {\n  border: 0;\n  padding: 0;\n}\nbutton,\ninput,\nselect,\ntextarea {\n  font-family: inherit;\n  font-size: 100%;\n  margin: 0;\n}\nbutton,\ninput {\n  line-height: normal;\n}\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  cursor: pointer;\n}\nbutton[disabled],\ninput[disabled] {\n  cursor: default;\n}\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  padding: 0;\n}\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  box-sizing: content-box;\n}\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\ntextarea {\n  overflow: auto;\n  vertical-align: top;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\nhtml {\n  font-family: 'PT Sans', sans-serif;\n}\npre,\ncode {\n  font-family: 'Inconsolata', sans-serif;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-family: 'PT Sans Narrow', sans-serif;\n  font-weight: 700;\n}\nhtml {\n  background-color: #073642;\n  color: #839496;\n  margin: 1em;\n}\nbody {\n  background-color: #002b36;\n  margin: 0 auto;\n  max-width: 23cm;\n  border: 1pt solid #586e75;\n  padding: 1em;\n}\ncode {\n  background-color: #073642;\n  padding: 2px;\n}\na {\n  color: #b58900;\n}\na:visited {\n  color: #cb4b16;\n}\na:hover {\n  color: #cb4b16;\n}\nh1 {\n  color: #d33682;\n}\nh2,\nh3,\nh4,\nh5,\nh6 {\n  color: #859900;\n}\npre {\n  background-color: #002b36;\n  color: #839496;\n  border: 1pt solid #586e75;\n  padding: 1em;\n  box-shadow: 5pt 5pt 8pt #073642;\n}\npre code {\n  background-color: #002b36;\n}\nh1 {\n  font-size: 2.8em;\n}\nh2 {\n  font-size: 2.4em;\n}\nh3 {\n  font-size: 1.8em;\n}\nh4 {\n  font-size: 1.4em;\n}\nh5 {\n  font-size: 1.3em;\n}\nh6 {\n  font-size: 1.15em;\n}\n.tag {\n  background-color: #073642;\n  color: #d33682;\n  padding: 0 0.2em;\n}\n.todo,\n.next,\n.done {\n  color: #002b36;\n  background-color: #dc322f;\n  padding: 0 0.2em;\n}\n.tag {\n  -webkit-border-radius: 0.35em;\n  -moz-border-radius: 0.35em;\n  border-radius: 0.35em;\n}\n.TODO {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #2aa198;\n}\n.NEXT {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #268bd2;\n}\n.ACTIVE {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #268bd2;\n}\n.DONE {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #859900;\n}\n.WAITING {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #cb4b16;\n}\n.HOLD {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #d33682;\n}\n.NOTE {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #d33682;\n}\n.CANCELLED {\n  -webkit-border-radius: 0.2em;\n  -moz-border-radius: 0.2em;\n  border-radius: 0.2em;\n  background-color: #859900;\n}"
+        },
+        "name" : {
+          "value" : "Dark"
+        }
+      }
+    },
+    {
+      "type" : "@editor.get-text",
+      "parameters" : {
+        "location" : 0,
+        "fallback" : 0,
+        "filename" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.file-name"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@doc.md-html",
+      "parameters" : {
+        "includeTemplate" : false,
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "HTML"
+        }
+      }
+    },
+    {
+      "type" : "@editor.filename",
+      "parameters" : {
+        "includeExtension" : false,
+        "mode" : 0
+      }
+    },
+    {
+      "type" : "@ui.render-html",
+      "parameters" : {
+        "showsProgress" : true,
+        "title" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "html" : {
+          "value" : "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n  @media (prefers-color-scheme: light) {\n    $\n  }\n  @media (prefers-color-scheme: dark) {\n    $\n  }\n  <\/style>\n<\/head>\n<body style='font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";'>\n  $\n<\/body>\n<\/html>",
+          "tokens" : [
+            {
+              "location" : 423,
+              "value" : "HTML"
+            },
+            {
+              "location" : 233,
+              "value" : "Dark"
+            },
+            {
+              "location" : 183,
+              "value" : "Light"
+            }
+          ]
+        },
+        "opaque" : true
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Custom Preview",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "eye",
+    "color" : "#7881FA"
+  },
+  "clientVersion" : 2
+}

@@ -1,0 +1,29 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "Adjust brightness of the current editor, this is used as an example for controlling editor UI using JavaScript."
+        }
+      }
+    },
+    {
+      "type" : "@flow.javascript",
+      "parameters" : {
+        "script" : {
+          "value" : "const finish = () => $actions.finish();\n\nconst editor = $editor.view;\nif (editor == null) {\n  finish();\n  return;\n}\n\nconst container = editor.super;\nconst viewId = \"brightness-slider\";\n\nif (container.get(viewId)) {\n  finish();\n  return;\n}\n\ncontainer.add({\n  type: \"view\",\n  props: {\n    id: viewId,\n    bgcolor: $color(\"#f0f0f0\", \"#303030\"),\n    alpha: 0.9,\n    cornerRadius: 5,\n    smoothCorners: true\n  },\n  layout: (make, view) => {\n    make.left.right.inset(20);\n    make.center.equalTo(editor);\n    make.height.equalTo(64);\n  },\n  views: [\n    {\n      type: \"label\",\n      props: {\n        text: \"Adjust Brightness\",\n        font: $font(13)\n      },\n      layout: (make, view) => {\n        make.left.top.equalTo(5);\n      }\n    },\n    {\n      type: \"slider\",\n      props: {\n        min: 0.1,\n        max: 1.0,\n        value: editor.alpha\n      },\n      layout: (make, view) => {\n        make.centerX.equalTo(view.super);\n        make.left.bottom.right.inset(5);\n      },\n      events: {\n        changed: sender => {\n          editor.alpha = sender.value;\n        }\n      }\n    },\n    {\n      type: \"button\",\n      props: {\n        symbol: \"xmark\",\n        bgcolor: $color(\"clear\"),\n        accessibilityLabel: \"Close\"\n      },\n      layout: (make, view) => {\n        make.top.right.inset(5);\n        make.size.equalTo($size(24, 24));\n      },\n      events: {\n        tapped: sender => {\n          const view = $(viewId);\n          view.remove();\n        }\n      }\n    }\n  ]\n});\n\nfinish();"
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Editor Brightness",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "lightbulb",
+    "color" : "#3FA1F8"
+  },
+  "clientVersion" : 2
+}

@@ -1,0 +1,83 @@
+{
+  "actions" : [
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@clipboard.text"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Clipboard"
+        }
+      }
+    },
+    {
+      "type" : "@text",
+      "parameters" : {
+        "text" : {
+          "value" : "\"$\"\n------------------------\n",
+          "tokens" : [
+            {
+              "location" : 1,
+              "value" : "Clipboard"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@util.set-clipboard",
+      "parameters" : {
+        "localOnly" : false,
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "expireAfter" : 0
+      }
+    },
+    {
+      "type" : "@clips.replace",
+      "parameters" : {
+        "value2" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "value1" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Clipboard"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Quote",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "quote.bubble",
+    "color" : "#FFB000"
+  },
+  "clientVersion" : 20
+}

@@ -1,0 +1,41 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "Clear clipboard (set to empty text)."
+        }
+      }
+    },
+    {
+      "type" : "@util.set-clipboard",
+      "parameters" : {
+        "localOnly" : true,
+        "text" : {
+          "value" : ""
+        },
+        "expireAfter" : 0
+      }
+    },
+    {
+      "type" : "@ui.toast",
+      "parameters" : {
+        "style" : 0,
+        "waitUntilDone" : false,
+        "title" : {
+          "value" : "Cleared"
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Clear Clipboard",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "trash",
+    "color" : "#A777FF"
+  },
+  "clientVersion" : 2
+}

@@ -1,0 +1,189 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "Preview Markdown using online Markdeep."
+        }
+      }
+    },
+    {
+      "type" : "@editor.get-text",
+      "parameters" : {
+        "location" : 0,
+        "fallback" : 0,
+        "filename" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.file-name"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Text"
+        }
+      }
+    },
+    {
+      "type" : "@editor.filename",
+      "parameters" : {
+        "includeExtension" : false,
+        "mode" : 0
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Filename"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "<meta charset=\"utf-8\" emacsmode=\"-*- markdown -*-\">\n<!-- Markdeep: --><style class=\"fallback\">body{visibility:hidden;white-space:pre;font-family:monospace}<\/style><script src=\"markdeep.min.js\" charset=\"utf-8\"><\/script><script src=\"https:\/\/morgan3d.github.io\/markdeep\/latest\/markdeep.min.js?\" charset=\"utf-8\"><\/script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility=\"visible\")<\/script>"
+        },
+        "name" : {
+          "value" : "Starter"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "<meta charset=\"utf-8\" emacsmode=\"-*- markdown -*-\"><link rel=\"stylesheet\" href=\"https:\/\/casual-effects.com\/markdeep\/latest\/newsmag.css?\">\n<style class=\"fallback\">body{visibility:hidden}<\/style><script>markdeepOptions={tocStyle:'medium'};<\/script>\n<!-- Markdeep: --><script src=\"https:\/\/casual-effects.com\/markdeep\/latest\/markdeep.min.js?\" charset=\"utf-8\"><\/script>"
+        },
+        "name" : {
+          "value" : "News Magazine"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "<meta charset=\"utf-8\" emacsmode=\"-*- markdown -*-\"><link rel=\"stylesheet\" href=\"https:\/\/casual-effects.com\/markdeep\/latest\/apidoc.css?\"\">\n<style class=\"fallback\">body{visibility:hidden}<\/style><script>markdeepOptions={tocStyle:'medium'};<\/script>\n<!-- Markdeep: --><script src=\"https:\/\/casual-effects.com\/markdeep\/latest\/markdeep.min.js?\" charset=\"utf-8\"><\/script>"
+        },
+        "name" : {
+          "value" : "API Documentation"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "<meta charset=\"utf-8\" emacsmode=\"-*- markdown -*-\"><style class=\"fallback\">body{visibility:hidden}<\/style><link rel=\"stylesheet\" href=\"https:\/\/casual-effects.com\/markdeep\/latest\/dark.css?\">\n<!-- Markdeep: --><script src=\"https:\/\/morgan3d.github.io\/markdeep\/latest\/markdeep.min.js?\" charset=\"utf-8\"><\/script>"
+        },
+        "name" : {
+          "value" : "Dark"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "<meta charset=\"utf-8\" emacsmode=\"-*- markdown -*-\">\n<link rel=\"stylesheet\" href=\"https:\/\/morgan3d.github.io\/markdeep\/latest\/latex.css?\">\n<!-- Markdeep: --><style class=\"fallback\">body{visibility:hidden}<\/style><script src=\"https:\/\/morgan3d.github.io\/markdeep\/latest\/markdeep.min.js?\" charset=\"utf-8\"><\/script>"
+        },
+        "name" : {
+          "value" : "Latex"
+        }
+      }
+    },
+    {
+      "type" : "@ui.menu",
+      "parameters" : {
+        "prompt" : {
+          "value" : "Select Style"
+        },
+        "multiValue" : false,
+        "lines" : {
+          "value" : "Starter\nNews Magazine\nAPI Documentation\nLatex\nDark"
+        }
+      }
+    },
+    {
+      "type" : "@flow.get-variable",
+      "parameters" : {
+        "fallback" : 0,
+        "name" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@ui.render-html",
+      "parameters" : {
+        "showsProgress" : true,
+        "title" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Filename"
+            }
+          ]
+        },
+        "html" : {
+          "value" : "<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n$\n$",
+          "tokens" : [
+            {
+              "location" : 96,
+              "value" : "@input"
+            },
+            {
+              "location" : 94,
+              "value" : "Text"
+            }
+          ]
+        },
+        "opaque" : true
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Markdeep Preview",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "pencil.tip",
+    "color" : "#3FA1F8"
+  },
+  "clientVersion" : 2
+}

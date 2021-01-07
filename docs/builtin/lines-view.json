@@ -1,0 +1,70 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "Convert text into lines, makes it easy to reorder or delete by lines."
+        }
+      }
+    },
+    {
+      "type" : "@editor.get-text",
+      "parameters" : {
+        "location" : 0,
+        "fallback" : 0,
+        "filename" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.file-name"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.javascript",
+      "parameters" : {
+        "script" : {
+          "value" : "const inputValue = $actions.inputValue;\nconst lines = inputValue.split(\"\\n\");\nconst listData = lines.map(line => {\n  return `${line}\\n`;\n});\n\n$ui.render({\n  props: {\n    title: \"Lines View\",\n    navButtons: [\n      {\n        title: \"Done\",\n        handler: () => commitChanges()\n      }\n    ]\n  },\n  views: [\n    {\n      type: \"list\",\n      props: {\n        id: \"list\",\n        style: 1,\n        reorder: true,\n        header: {\n          type: \"label\",\n          props: {\n            height: 32,\n            text: \"Swipe to delete, hold to reorder\",\n            align: $align.center,\n            font: $font(13)\n          }\n        },\n        actions: [\n          {\n            title: \"delete\",\n            handler: (_, indexPath) => {\n              listData.splice(indexPath.row, 1);\n              $delay(0.3, reloadData);\n            }\n          }\n        ]\n      },\n      layout: $layout.fill,\n      events: {\n        reorderMoved: (from, to) => {\n          moveItem(listData, from.row, to.row);\n        },\n        reorderFinished: reloadData\n      }\n    }\n  ]\n});\n\nreloadData();\n\nfunction reloadData() {\n  $(\"list\").data = listData;\n}\n\nfunction commitChanges() {\n  const result = listData.join(\"\");\n  $actions.resolve(result);\n  $app.close();\n}\n\nfunction moveItem(array, from, to) {\n  if (to >= array.length) {\n    var k = to - array.length + 1;\n    while (k--) {\n      array.push(undefined);\n    }\n  }\n  array.splice(to, 0, array.splice(from, 1)[0]);\n}"
+        }
+      }
+    },
+    {
+      "type" : "@editor.set-text",
+      "parameters" : {
+        "createIfNotExists" : true,
+        "location" : 0,
+        "filename" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.file-name"
+            }
+          ]
+        },
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Lines View",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "list.bullet.below.rectangle",
+    "color" : "#10ADC0"
+  },
+  "clientVersion" : 2
+}

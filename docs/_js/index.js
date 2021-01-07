@@ -38,12 +38,11 @@ window.$docsify = {
       hook.doneEach(() => {
         const links = document.querySelectorAll('a');
         links.forEach(link => {
-          const href = link.href;
-          if (/\/actions\/.+\.json/.test(href)) {
-            const name = href.substring(href.lastIndexOf('/') + 1);
+          const match = link.href.match(/\/docs\/(.+\.json)/);
+          if (match) {
             link.onclick = event => {
               event.preventDefault();
-              getActions(name);
+              getActions(match[1]);
             }
           }
         });
@@ -61,7 +60,7 @@ const iOS = (() => {
 
 function getActions(name) {
   const type = iOS ? 'raw' : 'blob';
-  const url = `https://github.com/cyanzhong/actions.taio.app/${type}/master/docs/actions/${name}`;  
+  const url = `https://github.com/cyanzhong/actions.taio.app/${type}/master/docs/${name}`;  
   if (iOS) {
     window.location = `taio://actions?action=import&url=${encodeURIComponent(url)}`;
   } else {

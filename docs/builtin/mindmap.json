@@ -1,0 +1,143 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "Visualize Markdown content by generating a MindMap view."
+        }
+      }
+    },
+    {
+      "type" : "@flow.javascript",
+      "parameters" : {
+        "script" : {
+          "value" : "const script = $cache.get(\"markmap.js\");\nconst cached = script != null;\n$actions.resolve(cached);"
+        }
+      }
+    },
+    {
+      "type" : "@flow.if",
+      "parameters" : {
+        "blockIdentifier" : "F387C385-9831-40B5-9016-C58DC07BDE19",
+        "condition" : 0,
+        "rhs" : {
+          "value" : "0"
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@ui.toast",
+      "parameters" : {
+        "style" : 0,
+        "waitUntilDone" : false,
+        "title" : {
+          "value" : "Loading..."
+        }
+      }
+    },
+    {
+      "type" : "@flow.else",
+      "parameters" : {
+        "blockIdentifier" : "F387C385-9831-40B5-9016-C58DC07BDE19"
+      }
+    },
+    {
+      "type" : "@flow.endif",
+      "parameters" : {
+        "blockIdentifier" : "F387C385-9831-40B5-9016-C58DC07BDE19"
+      }
+    },
+    {
+      "type" : "@editor.get-text",
+      "parameters" : {
+        "location" : 0,
+        "fallback" : 0,
+        "filename" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.file-name"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.javascript",
+      "parameters" : {
+        "script" : {
+          "value" : "const script = $cache.get(\"markmap.js\");\nif (script) {\n  run(script);\n} else {\n  const {data} = await $http.get(\"https:\/\/xteko.blob.core.windows.net\/files\/markmap.js\");\n  run(data);\n  $cache.set(\"markmap.js\", data);\n}\n\nfunction run(script) {\n  const module = {\"exports\": {}};\n  const execute = new Function(\"exports, module\", script);\n  execute(module.exports, module);\n\n  const markmap = module.exports;\n  const markdown = $actions.inputValue;\n\n  const data = markmap(markdown);\n  const output = JSON.stringify(data);\n  $actions.resolve(output);\n}"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Data"
+        }
+      }
+    },
+    {
+      "type" : "@editor.filename",
+      "parameters" : {
+        "includeExtension" : false,
+        "mode" : 0
+      }
+    },
+    {
+      "type" : "@ui.render-html",
+      "parameters" : {
+        "showsProgress" : true,
+        "title" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "html" : {
+          "value" : "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<link rel=\"stylesheet\" href=\"https:\/\/cdn.jsdelivr.net\/npm\/markmap@0.6.1\/style\/view.mindmap.css\">\n<style>\n* {\n  margin: 0;\n  padding: 0;\n}\nsvg#mindmap {\n  width: 100vw;\n  height: 100vh;\n}\n<\/style>\n<script src=\"https:\/\/cdn.jsdelivr.net\/npm\/d3@3\"><\/script>\n<script src=\"https:\/\/cdn.jsdelivr.net\/npm\/markmap@0.6.1\/lib\/d3-flextree.js\"><\/script>\n<script src=\"https:\/\/cdn.jsdelivr.net\/npm\/markmap@0.6.1\/lib\/view.mindmap.js\"><\/script>\n<\/head>\n<body>\n<svg id=\"mindmap\"><\/svg>\n<script>\n  markmap(\"svg#mindmap\", $, {\n    preset: \"colorful\",\n    linkShape: \"diagonal\",\n  });\n\n  function themeChanged() {\n    const dark = window.matchMedia(\"(prefers-color-scheme: dark)\").matches;\n    const fill = dark ? \"white\" : \"black\";\n    const nodes = document.querySelectorAll(\"text\");\n    nodes.forEach(node => {\n      node.style.fill = fill;\n    });\n  }\n\n  window.matchMedia(\"(prefers-color-scheme: dark)\").addListener(e => e.matches && themeChanged());\n  window.matchMedia(\"(prefers-color-scheme: light)\").addListener(e => e.matches && themeChanged());\n  window.onload = themeChanged;\n\n  const svg = document.querySelector(\"#mindmap\");\n  const observer = new MutationObserver(themeChanged);\n  observer.observe(svg, {\n    attributes: true,\n    childList: true,\n    subtree: true\n  });\n<\/script>\n<\/body>\n<\/html>",
+          "tokens" : [
+            {
+              "location" : 625,
+              "value" : "Data"
+            }
+          ]
+        },
+        "opaque" : false
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "MindMap",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "list.bullet.indent",
+    "color" : "#FB6666"
+  },
+  "clientVersion" : 2
+}

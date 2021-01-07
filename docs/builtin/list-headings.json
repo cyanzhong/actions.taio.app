@@ -1,0 +1,57 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "List all headings using regular expression."
+        }
+      }
+    },
+    {
+      "type" : "@text.filter",
+      "parameters" : {
+        "mode" : 4,
+        "pattern" : {
+          "value" : "^#+ +.+"
+        },
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.full-text"
+            }
+          ]
+        },
+        "multiLineRegex" : true
+      }
+    },
+    {
+      "type" : "@ui.render-text",
+      "parameters" : {
+        "title" : {
+          "value" : ""
+        },
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "List Headings",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "list.bullet.indent",
+    "color" : "#FFB000"
+  },
+  "clientVersion" : 2
+}

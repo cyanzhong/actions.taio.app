@@ -1,0 +1,41 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "Search selected text."
+        }
+      }
+    },
+    {
+      "type" : "@editor.selected-text",
+      "parameters" : {
+        "fallback" : 0
+      }
+    },
+    {
+      "type" : "@util.web-search",
+      "parameters" : {
+        "query" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Search Selected",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "selection.pin.in.out",
+    "color" : "#FB6666"
+  },
+  "clientVersion" : 1
+}
