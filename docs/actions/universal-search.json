@@ -1,0 +1,309 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "Search clipboard text in many ways."
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.google.com\/search?q="
+        },
+        "name" : {
+          "value" : "Google"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/bing.com\/search?q="
+        },
+        "name" : {
+          "value" : "Bing"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.baidu.com\/s?wd="
+        },
+        "name" : {
+          "value" : "Baidu"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/duckduckgo.com\/?q="
+        },
+        "name" : {
+          "value" : "DuckDuckGo"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.wolframalpha.com\/input\/?i="
+        },
+        "name" : {
+          "value" : "Wolfram Alpha"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/m.wikipedia.org\/wiki\/"
+        },
+        "name" : {
+          "value" : "Wikipedia"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/m.youdao.com\/dict?&q="
+        },
+        "name" : {
+          "value" : "Youdao Dict"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/bing.com\/dict\/search?q="
+        },
+        "name" : {
+          "value" : "Bing Dict"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/dict.eudic.net\/mdicts\/en\/"
+        },
+        "name" : {
+          "value" : "Eudic"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/translate.google.com\/?hl=en#auto\/zh-CN\/"
+        },
+        "name" : {
+          "value" : "Google Translate"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/maps.apple.com\/?q="
+        },
+        "name" : {
+          "value" : "Apple Maps"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.amap.com\/search?query="
+        },
+        "name" : {
+          "value" : "AutoNavi"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/map.baidu.com\/search\/"
+        },
+        "name" : {
+          "value" : "Baidu Maps"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.google.com\/search?tbm=isch&q=%@"
+        },
+        "name" : {
+          "value" : "Google Images"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/bing.com\/images\/search?q="
+        },
+        "name" : {
+          "value" : "Bing Images"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/image.baidu.com\/search\/wiseala?tn=wiseala&word="
+        },
+        "name" : {
+          "value" : "Baidu Images"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/s.m.taobao.com\/h5?q="
+        },
+        "name" : {
+          "value" : "Taobao"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/m.jd.com\/ware\/search.action?keyword="
+        },
+        "name" : {
+          "value" : "JD.com"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.amazon.com\/s\/field-keywords="
+        },
+        "name" : {
+          "value" : "Amazon"
+        }
+      }
+    },
+    {
+      "type" : "@ui.menu",
+      "parameters" : {
+        "prompt" : {
+          "value" : "Search Engine"
+        },
+        "multiValue" : false,
+        "lines" : {
+          "value" : "Google\nBing\nBaidu\nDuckDuckGo\nWolfram Alpha\nWikipedia\nYoudao Dict\nBing Dict\nEudic\nGoogle Translate\nApple Maps\nAutoNavi\nBaidu Maps\nGoogle Images\nBing Images\nBaidu Images\nTaobao\nJD.com\nAmazon"
+        }
+      }
+    },
+    {
+      "type" : "@flow.get-variable",
+      "parameters" : {
+        "fallback" : 0,
+        "name" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Engine"
+        }
+      }
+    },
+    {
+      "type" : "@text.encode",
+      "parameters" : {
+        "mode" : 0,
+        "decode" : false,
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@clipboard.text"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@util.open-url",
+      "parameters" : {
+        "url" : {
+          "value" : "$$",
+          "tokens" : [
+            {
+              "location" : 1,
+              "value" : "@input"
+            },
+            {
+              "location" : 0,
+              "value" : "Engine"
+            }
+          ]
+        },
+        "browser" : 0
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Universal Search",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "magnifyingglass",
+    "color" : "#E09971"
+  },
+  "clientVersion" : 2
+}

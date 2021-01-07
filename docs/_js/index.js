@@ -1,3 +1,20 @@
+function getActions(name) {
+  const iOS = (() => {
+    return [
+      'iPad Simulator', 'iPhone Simulator', 'iPod Simulator',
+      'iPad', 'iPhone', 'iPod',
+    ].includes(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+  })();
+
+  const type = iOS ? 'raw' : 'blob';
+  const url = `https://github.com/cyanzhong/actions.taio.app/${type}/master/docs/actions/${name}.json`;  
+  if (iOS) {
+    window.open(`taio://actions?action=import&url=${encodeURIComponent(url)}`);
+  } else {
+    window.open(url);
+  }
+}
+
 window.$docsify = {
   alias: {
     '/((?!cn).)*/_sidebar.md': '/_sidebar.md',
