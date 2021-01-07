@@ -4,7 +4,7 @@
 
 Before we have a well designed website for actions sharing, we use this repository as a temporary solution.
 
-## Online Reader
+## Online Browser
 
 https://actions.taio.app
 
