@@ -27,7 +27,7 @@ window.$docsify = {
   },
   formatUpdated: '{MM}/{DD} {HH}:{mm}',
   plugins: [
-    EditOnGithubPlugin.create('https://github.com/cyanzhong/actions.taio.app/blob/master/', null, path => {
+    EditOnGithubPlugin.create('https://github.com/cyanzhong/actions.taio.app/blob/master/docs/', null, path => {
       if (path.indexOf('cn/') === 0) {
         return '在 GitHub 上编辑';
       } else {
@@ -61,7 +61,7 @@ const iOS = (() => {
 
 function getActions(name) {
   const type = iOS ? 'raw' : 'blob';
-  const url = `https://github.com/cyanzhong/actions.taio.app/${type}/master/actions/${name}`;  
+  const url = `https://github.com/cyanzhong/actions.taio.app/${type}/master/docs/actions/${name}`;  
   if (iOS) {
     window.location = `taio://actions?action=import&url=${encodeURIComponent(url)}`;
   } else {
