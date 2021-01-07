@@ -1,0 +1,186 @@
+body {
+  font-size: 17px;
+}
+
+input {
+  border-radius: 4px;
+}
+
+.app-nav a {
+  font-size: 17px;
+}
+
+.app-nav > ul > li > a.active {
+  color: inherit;
+  border-bottom: none;
+}
+
+.sidebar > h1 {
+  font-weight: 700;
+}
+
+.sidebar ul, .sidebar ul li {
+  font-weight: 600;
+}
+
+.sidebar ul li a {
+  font-size: 15px;
+}
+
+.sidebar-toggle {
+  margin-left: 0px;
+  margin-right: 0px;
+  bottom: -6px;
+}
+
+.sidebar-toggle span {
+  width: 24px;
+  margin-bottom: 6px;
+}
+
+.sidebar-toggle:hover .sidebar-toggle-button {
+  opacity: 1;
+}
+
+.markdown-section pre {
+  border-radius: 4px;
+}
+
+.markdown-section code {
+  color: #ff9500;
+  font-weight: 600;
+}
+
+.markdown-section blockquote {
+  background: #f8f8f8;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.markdown-section blockquote p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar-toggle {
+    bottom: -10px;
+  }
+  .sidebar-toggle span {
+    width: 32px;
+    margin-bottom: 8px;
+    height: 3px;
+  }
+  .markdown-section {
+    max-width: 95%;
+  }
+  .markdown-section pre {
+    padding: 0 0.8rem;
+  }
+  .markdown-section pre > code {
+    padding: 1.5em 5px;
+  }
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #7D8B99;
+}
+
+.token.punctuation {
+  color: #5F6364;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.function-name,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #c92c2c;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.function,
+.token.builtin,
+.token.inserted {
+  color: #2f9c0a;
+}
+
+.token.operator {
+  color: #a67f59;
+}
+
+.token.entity,
+.token.url,
+.token.variable {
+  color: #a67f59;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword,
+.token.class-name {
+  color: #1990b8;
+}
+
+.token.regex,
+.token.important {
+  color: #e90;
+}
+
+.language-css .token.string,
+.style .token.string {
+  color: #a67f59;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.token.important {
+  font-weight: normal;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.namespace {
+  opacity: .7;
+}
+
+.markdown-section pre {
+  background-color: #fafafa;
+}
+
+.markdown-section pre > code {
+  background-color: #fafafa;
+  color: #34495e;
+  font-weight: normal;
+}
+
+.sequence svg, .flowchart svg, .mermaid svg {
+  background: white;
+  margin-bottom: 24px;
+  margin-right: 24px;
+  border-radius: 3px;
+}
+
+pre::after {
+  content: "";
+}
