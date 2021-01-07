@@ -9,7 +9,7 @@ function getActions(name) {
   const type = iOS ? 'raw' : 'blob';
   const url = `https://github.com/cyanzhong/actions.taio.app/${type}/master/docs/actions/${name}.json`;  
   if (iOS) {
-    window.open(`taio://actions?action=import&url=${encodeURIComponent(url)}`);
+    window.location = `taio://actions?action=import&url=${encodeURIComponent(url)}`;
   } else {
     window.open(url);
   }
