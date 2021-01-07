@@ -1,7 +1,5 @@
 ## Universal Search
 
-<a onclick='event.preventDefault();getActions("universal-search")' href=''>
-  Get Actions
-</a>
+<a href='/actions/universal-search.json'>Get Actions</a>
 
 Search clipboard text in many ways.

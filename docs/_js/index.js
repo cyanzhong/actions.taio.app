@@ -1,20 +1,3 @@
-function getActions(name) {
-  const iOS = (() => {
-    return [
-      'iPad Simulator', 'iPhone Simulator', 'iPod Simulator',
-      'iPad', 'iPhone', 'iPod',
-    ].includes(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
-  })();
-
-  const type = iOS ? 'raw' : 'blob';
-  const url = `https://github.com/cyanzhong/actions.taio.app/${type}/master/docs/actions/${name}.json`;  
-  if (iOS) {
-    window.location = `taio://actions?action=import&url=${encodeURIComponent(url)}`;
-  } else {
-    window.open(url);
-  }
-}
-
 window.$docsify = {
   alias: {
     '/((?!cn).)*/_sidebar.md': '/_sidebar.md',
@@ -50,6 +33,38 @@ window.$docsify = {
       } else {
         return 'Edit on GitHub';
       }
-    })
+    }),
+    hook => {
+      hook.doneEach(() => {
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+          const href = link.href;
+          if (/\/actions\/.+\.json/.test(href)) {
+            const name = href.substring(href.lastIndexOf('/') + 1);
+            link.onclick = event => {
+              event.preventDefault();
+              getActions(name);
+            }
+          }
+        });
+      });
+    }
   ]
 };
+
+const iOS = (() => {
+  return [
+    'iPad Simulator', 'iPhone Simulator', 'iPod Simulator',
+    'iPad', 'iPhone', 'iPod',
+  ].includes(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+})();
+
+function getActions(name) {
+  const type = iOS ? 'raw' : 'blob';
+  const url = `https://github.com/cyanzhong/actions.taio.app/${type}/master/docs/actions/${name}`;  
+  if (iOS) {
+    window.location = `taio://actions?action=import&url=${encodeURIComponent(url)}`;
+  } else {
+    window.open(url);
+  }
+}
