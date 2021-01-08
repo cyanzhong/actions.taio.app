@@ -8,6 +8,12 @@ Before we have a well designed website for actions sharing, we use this reposito
 
 https://actions.taio.app
 
+## Submit Taio Actions
+
+If you have created some awesome actions for Taio, and wanted to share with the community, you can [submit your actions](https://airtable.com/shrZtX5DaukiL4ZFt).
+
+We are building an in-app workflow for this as well, which can significantly save the effort in future.
+
 ## Contact Us
 
 Feel free to reach us out:
