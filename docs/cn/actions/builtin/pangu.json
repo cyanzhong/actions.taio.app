@@ -1,0 +1,112 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "在中英文之间加入空格，显示更美观。"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.full-text"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "fromText"
+        }
+      }
+    },
+    {
+      "type" : "@flow.javascript",
+      "parameters" : {
+        "script" : {
+          "value" : "function process(content) {\n  content = content.replace(\/^(.*)(\\r?\\n\\1)+$\/gm, \"$1\");\n  content = content.split(\"\\n\").map(line => {\n    line = replacePunctuations(line);\n    line = line.replace(\/([\\u4e00-\\u9fa5\\u3040-\\u30FF][*]*)([a-zA-Z0-9\\[\\(])\/g, \"$1 $2\");\n    line = line.replace(\/([a-zA-Z0-9\\]!;\\,\\.\\:\\?\\)])([*]*[\\u4e00-\\u9fa5\\u3040-\\u30FF])\/g, \"$1 $2\");\n    line = line.replace(\/\\[([^\\]]+)\\][（(]([^)]+)[）)]\/g, \"[$1]($2)\");\n    return line;\n  }).join(\"\\n\");\n  return content;\n}\n\nfunction replacePunctuations(content) {\n  content = content.replace(\/([\\u4e00-\\u9fa5\\u3040-\\u30FF])\\.($|\\s*)\/g, \"$1。\");\n  content = content.replace(\/([\\u4e00-\\u9fa5\\u3040-\\u30FF]),\\s*\/g, \"$1，\");\n  content = content.replace(\/([\\u4e00-\\u9fa5\\u3040-\\u30FF]);\\s*\/g, \"$1；\");\n  content = content.replace(\/([\\u4e00-\\u9fa5\\u3040-\\u30FF])!\\s*\/g, \"$1！\");\n  content = content.replace(\/([\\u4e00-\\u9fa5\\u3040-\\u30FF]):\\s*\/g, \"$1：\");\n  content = content.replace(\/([\\u4e00-\\u9fa5\\u3040-\\u30FF])\\?\\s*\/g, \"$1？\");\n  content = content.replace(\/([\\u4e00-\\u9fa5\\u3040-\\u30FF])\\\\\\s*\/g, \"$1、\");\n  content = content.replace(\/\\(([\\u4e00-\\u9fa5\\u3040-\\u30FF])\/g, \"（$1\");\n  content = content.replace(\/([\\u4e00-\\u9fa5\\u3040-\\u30FF])\\)\/g, \"$1）\");\n  content = content.replace(\/。\\{3,}\/g, \"......\");\n  content = content.replace(\/([！？])$1{3,}\/g, \"$1$1$1\");\n  content = content.replace(\/([。，；：、“”『』〖〗《》])\\1{1,}\/g, \"$1\");\n  return content;\n}\n\nconst input = $actions.inputValue;\nconst result = process(input);\n$actions.resolve(result);"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "toText"
+        }
+      }
+    },
+    {
+      "type" : "@ui.render-diff",
+      "parameters" : {
+        "fullScreen" : false,
+        "rhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "toText"
+            }
+          ]
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "fromText"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@editor.set-text",
+      "parameters" : {
+        "createIfNotExists" : false,
+        "location" : 0,
+        "filename" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.file-name"
+            }
+          ]
+        },
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "toText"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "中英文空格",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "textbox",
+    "color" : "#3FA1F8"
+  },
+  "clientVersion" : 133
+}

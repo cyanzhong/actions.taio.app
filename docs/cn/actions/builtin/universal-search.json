@@ -1,0 +1,309 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "使用多种方式搜索剪贴板文本。"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.google.com\/search?q="
+        },
+        "name" : {
+          "value" : "谷歌搜索"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/cn.bing.com\/search?q="
+        },
+        "name" : {
+          "value" : "必应搜索"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.baidu.com\/s?wd="
+        },
+        "name" : {
+          "value" : "百度搜索"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/duckduckgo.com\/?q="
+        },
+        "name" : {
+          "value" : "DuckDuckGo"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.wolframalpha.com\/input\/?i="
+        },
+        "name" : {
+          "value" : "Wolfram Alpha"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/zh.m.wikipedia.org\/wiki\/"
+        },
+        "name" : {
+          "value" : "维基百科"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/m.youdao.com\/dict?&q="
+        },
+        "name" : {
+          "value" : "有道词典"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/cn.bing.com\/dict\/search?q="
+        },
+        "name" : {
+          "value" : "必应词典"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/dict.eudic.net\/mdicts\/en\/"
+        },
+        "name" : {
+          "value" : "欧路词典"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/translate.google.cn\/?hl=en#auto\/zh-CN\/"
+        },
+        "name" : {
+          "value" : "谷歌翻译"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/maps.apple.com\/?q="
+        },
+        "name" : {
+          "value" : "Apple 地图"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.amap.com\/search?query="
+        },
+        "name" : {
+          "value" : "高德地图"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/map.baidu.com\/search\/"
+        },
+        "name" : {
+          "value" : "百度地图"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.google.com\/search?tbm=isch&q=%@"
+        },
+        "name" : {
+          "value" : "谷歌图片"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/cn.bing.com\/images\/search?q="
+        },
+        "name" : {
+          "value" : "必应图片"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/image.baidu.com\/search\/wiseala?tn=wiseala&word="
+        },
+        "name" : {
+          "value" : "百度图片"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/s.m.taobao.com\/h5?q="
+        },
+        "name" : {
+          "value" : "淘宝商品"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/m.jd.com\/ware\/search.action?keyword="
+        },
+        "name" : {
+          "value" : "京东商品"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "https:\/\/www.amazon.cn\/s\/field-keywords="
+        },
+        "name" : {
+          "value" : "亚马逊商品"
+        }
+      }
+    },
+    {
+      "type" : "@ui.menu",
+      "parameters" : {
+        "prompt" : {
+          "value" : "选择搜索方式"
+        },
+        "multiValue" : false,
+        "lines" : {
+          "value" : "谷歌搜索\n必应搜索\n百度搜索\nDuckDuckGo\nWolfram Alpha\n维基百科\n有道词典\n必应词典\n欧路词典\n谷歌翻译\nApple 地图\n高德地图\n百度地图\n谷歌图片\n必应图片\n百度图片\n淘宝商品\n京东商品\n亚马逊商品"
+        }
+      }
+    },
+    {
+      "type" : "@flow.get-variable",
+      "parameters" : {
+        "fallback" : 0,
+        "name" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Engine"
+        }
+      }
+    },
+    {
+      "type" : "@text.encode",
+      "parameters" : {
+        "mode" : 0,
+        "decode" : false,
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@clipboard.text"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@util.open-url",
+      "parameters" : {
+        "url" : {
+          "value" : "$$",
+          "tokens" : [
+            {
+              "location" : 1,
+              "value" : "@input"
+            },
+            {
+              "location" : 0,
+              "value" : "Engine"
+            }
+          ]
+        },
+        "browser" : 0
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "综合搜索",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "magnifyingglass",
+    "color" : "#E09971"
+  },
+  "clientVersion" : 2
+}

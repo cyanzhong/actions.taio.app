@@ -1,0 +1,41 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "选中内容进行搜索。"
+        }
+      }
+    },
+    {
+      "type" : "@editor.selected-text",
+      "parameters" : {
+        "fallback" : 0
+      }
+    },
+    {
+      "type" : "@util.web-search",
+      "parameters" : {
+        "query" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "搜索选中内容",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "selection.pin.in.out",
+    "color" : "#FB6666"
+  },
+  "clientVersion" : 1
+}

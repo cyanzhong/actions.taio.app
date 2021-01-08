@@ -1,0 +1,409 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "对文本进行全局的查找替换。"
+        }
+      }
+    },
+    {
+      "type" : "@editor.get-text",
+      "parameters" : {
+        "location" : 0,
+        "fallback" : 0,
+        "filename" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.file-name"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Text"
+        }
+      }
+    },
+    {
+      "type" : "@ui.alert",
+      "parameters" : {
+        "showCancelButton" : true,
+        "message" : {
+          "value" : ""
+        },
+        "title" : {
+          "value" : "查找方式"
+        },
+        "actions" : [
+          {
+            "title" : {
+              "value" : "大小写不敏感"
+            },
+            "value" : {
+              "value" : "0"
+            }
+          },
+          {
+            "title" : {
+              "value" : "大小写敏感"
+            },
+            "value" : {
+              "value" : "1"
+            }
+          },
+          {
+            "title" : {
+              "value" : "正则表达式"
+            },
+            "value" : {
+              "value" : "2"
+            }
+          },
+          {
+            "title" : {
+              "value" : ""
+            },
+            "value" : {
+              "value" : "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Method"
+        }
+      }
+    },
+    {
+      "type" : "@ui.text-input",
+      "parameters" : {
+        "prompt" : {
+          "value" : "输入查找的内容"
+        },
+        "keyboardType" : 0,
+        "initialText" : {
+          "value" : ""
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Query"
+        }
+      }
+    },
+    {
+      "type" : "@ui.text-input",
+      "parameters" : {
+        "prompt" : {
+          "value" : "输入替换的内容"
+        },
+        "keyboardType" : 0,
+        "initialText" : {
+          "value" : ""
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "NewText"
+        }
+      }
+    },
+    {
+      "type" : "@flow.if",
+      "parameters" : {
+        "blockIdentifier" : "20DCB500-30FF-40D1-8508-3143B35870D3",
+        "condition" : 0,
+        "rhs" : {
+          "value" : "0"
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Method"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@text.replace",
+      "parameters" : {
+        "mode" : 0,
+        "pattern" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Query"
+            }
+          ]
+        },
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Text"
+            }
+          ]
+        },
+        "replacement" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "NewText"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.else",
+      "parameters" : {
+        "blockIdentifier" : "20DCB500-30FF-40D1-8508-3143B35870D3"
+      }
+    },
+    {
+      "type" : "@flow.if",
+      "parameters" : {
+        "blockIdentifier" : "6015D4F0-35E8-4DE1-8ACC-7C0141F5E451",
+        "condition" : 0,
+        "rhs" : {
+          "value" : "1"
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Method"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@text.replace",
+      "parameters" : {
+        "mode" : 1,
+        "pattern" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Query"
+            }
+          ]
+        },
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Text"
+            }
+          ]
+        },
+        "replacement" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "NewText"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.else",
+      "parameters" : {
+        "blockIdentifier" : "6015D4F0-35E8-4DE1-8ACC-7C0141F5E451"
+      }
+    },
+    {
+      "type" : "@text.replace",
+      "parameters" : {
+        "mode" : 2,
+        "pattern" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Query"
+            }
+          ]
+        },
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Text"
+            }
+          ]
+        },
+        "replacement" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "NewText"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.endif",
+      "parameters" : {
+        "blockIdentifier" : "6015D4F0-35E8-4DE1-8ACC-7C0141F5E451"
+      }
+    },
+    {
+      "type" : "@flow.endif",
+      "parameters" : {
+        "blockIdentifier" : "20DCB500-30FF-40D1-8508-3143B35870D3"
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Result"
+        }
+      }
+    },
+    {
+      "type" : "@ui.render-diff",
+      "parameters" : {
+        "rhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Text"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@ui.confirm",
+      "parameters" : {
+        "text" : {
+          "value" : "确认替换？"
+        }
+      }
+    },
+    {
+      "type" : "@editor.set-text",
+      "parameters" : {
+        "createIfNotExists" : true,
+        "location" : 0,
+        "filename" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.file-name"
+            }
+          ]
+        },
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Result"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "查找替换",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "magnifyingglass.circle",
+    "color" : "#60C172"
+  },
+  "clientVersion" : 1
+}
