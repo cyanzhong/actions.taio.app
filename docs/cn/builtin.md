@@ -16,7 +16,7 @@
 
 创建被引用的文本内容。(by [Taio 团队](https://taio.app/cn/))
 
-## Clear Clipboard
+## 清除剪贴板
 
 <a href='/docs/cn/actions/builtin/clear-clipboard.json'>获取动作</a>
 
