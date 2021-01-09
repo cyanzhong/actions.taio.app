@@ -1,3 +1,7 @@
 - Directory
-  - [Built-in](builtin.md)
-  - [Converter](converter.md)
+  - [Built-in Actions](builtin.md)
+  - [Search](search.md)
+  - [Text Formatting](format.md)
+  - [Document Conversion](convert.md)
+  - [Preview](preview.md)
+  - [Utility](utility.md)

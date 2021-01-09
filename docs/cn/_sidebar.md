@@ -1,3 +1,7 @@
 - 目录
   - [内置动作](cn/builtin.md)
-  - [文档转换](cn/converter.md)
+  - [搜索](cn/search.md)
+  - [文本格式化](cn/format.md)
+  - [文档转换](cn/convert.md)
+  - [预览](cn/preview.md)
+  - [实用工具](cn/utility.md)
