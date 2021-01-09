@@ -1,3 +1,10 @@
+const iOS = (() => {
+  return [
+    'iPad Simulator', 'iPhone Simulator', 'iPod Simulator',
+    'iPad', 'iPhone', 'iPod',
+  ].includes(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+})();
+
 localizePageTitle(location.href.indexOf('/#/cn/') !== -1);
 
 window.$docsify = {
@@ -39,7 +46,8 @@ window.$docsify = {
     (hook, vm) => {
       hook.doneEach(() => {
         const path = vm.route.path;
-        localizePageTitle(path.indexOf('/cn/') !== -1);
+        const cn = path.indexOf('/cn/') !== -1;
+        localizePageTitle(cn);
 
         const editButton = document.querySelector('a[onclick^="EditOnGithubPlugin"]');
         if (editButton) {
@@ -54,9 +62,17 @@ window.$docsify = {
         links.forEach(link => {
           const match = link.href.match(/\/docs\/(.+\.json)/);
           if (match) {
+            const name = match[1];
             link.onclick = event => {
               event.preventDefault();
-              getActions(match[1]);
+              getActions(name);
+            }
+
+            if (!iOS) {
+              const span = document.createElement('span');
+              const title = cn ? '二维码' : 'QR Code';
+              span.innerHTML = `&nbsp;&nbsp;<a href='' onclick='event.preventDefault();showQRCode("${name}")'>${title}</a>`;
+              link.parentNode.insertBefore(span, link.nextSibling);
             }
           }
         });
@@ -65,21 +81,32 @@ window.$docsify = {
   ]
 };
 
-const iOS = (() => {
-  return [
-    'iPad Simulator', 'iPhone Simulator', 'iPod Simulator',
-    'iPad', 'iPhone', 'iPod',
-  ].includes(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
-})();
+function repoURL(type, name) {
+  return `https://github.com/cyanzhong/actions.taio.app/${type}/master/docs/${name}`;
+}
+
+function importURL(url) {
+  return `taio://actions?action=import&url=${encodeURIComponent(url)}`;
+}
 
 function getActions(name) {
   const type = iOS ? 'raw' : 'blob';
-  const url = `https://github.com/cyanzhong/actions.taio.app/${type}/master/docs/${name}`;  
+  const url = repoURL(type, name);
   if (iOS) {
-    window.location = `taio://actions?action=import&url=${encodeURIComponent(url)}`;
+    window.location = importURL(url);
   } else {
     window.open(url);
   }
+}
+
+function showQRCode(name) {
+  const url = importURL(repoURL('raw', name));
+  const qrcode = new QRious();
+  qrcode.value = url;
+
+  const newTab = window.open();
+  newTab.document.title = url;
+  newTab.document.body.innerHTML = `<img src='${qrcode.toDataURL()}'>`;
 }
 
 function localizePageTitle(cn) {
