@@ -1,0 +1,70 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "Convert Markdown to many formats using online Pandoc service https:\/\/docverter.com, such as Microsoft Word and RTF."
+        }
+      }
+    },
+    {
+      "type" : "@editor.filename",
+      "parameters" : {
+        "mode" : 0,
+        "includeExtension" : false
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "fileName"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.full-text"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "inputText"
+        }
+      }
+    },
+    {
+      "type" : "@flow.javascript",
+      "parameters" : {
+        "script" : {
+          "value" : "const fileName = $actions.getVar(\"fileName\");\nconst inputText = $actions.getVar(\"inputText\");\n\nconst formats = [\n  { name: \"Microsoft Word\", ext: \"docx\" },\n  { name: \"HTML\", ext: \"html\" },\n  { name: \"PDF\", ext: \"pdf\" },\n  { name: \"Rich Text Format\", ext: \"rtf\" },\n  { name: \"EPUB Book\", ext: \"epub\" },\n  { name: \"Kindle Book\", ext: \"mobi\" },\n  { name: \"LaTex\", ext: \"latex\" },\n  { name: \"AsciiDoc\", ext: \"asciidoc\" }\n];\n\nconst keys = {\n  format: \"format\",\n  smart: \"smart\",\n  noWrap: \"noWrap\",\n  toc: \"toc\",\n  options: \"options\"\n};\n\nconst states = {\n  format: $cache.get(keys.format) || \"docx\",\n  smart: $cache.get(keys.smart) || false,\n  noWrap: $cache.get(keys.noWrap) || false,\n  toc: $cache.get(keys.toc) || false,\n  options: $cache.get(keys.options) || \"\",\n  loading: false\n};\n\nconst template = [\n  {\n    type: \"label\",\n    props: {\n      id: \"title\"\n    },\n    layout: (make, view) => {\n      make.left.right.inset(15);\n      make.centerY.equalTo(view.super);\n    }\n  },\n  {\n    type: \"label\",\n    props: {\n      id: \"detail\"\n    },\n    layout: (make, view) => {\n      make.right.inset(15);\n      make.centerY.equalTo(view.super);\n    }\n  },\n  {\n    type: \"switch\",\n    props: {\n      id: \"switcher\"\n    },\n    layout: (make, view) => {\n      make.right.inset(15);\n      make.centerY.equalTo(view.super);\n    },\n    events: {\n      changed: (sender) => {\n        states[sender.info] = sender.on;\n        $cache.set(sender.info, sender.on);\n      }\n    }\n  },\n  {\n    type: \"spinner\",\n    props: {\n      id: \"spinner\"\n    },\n    layout: $layout.center\n  }\n];\n\nconst handlers = {\n  selectFormat,\n  options,\n  convert\n};\n\n$ui.render({\n  props: {\n    title: \"Docverter\"\n  },\n  views: [\n    {\n      type: \"list\",\n      props: {\n        style: 2,\n        template: template\n      },\n      layout: $layout.fill,\n      events: {\n        didSelect: ($0, $1, { handler }) => {\n          if (handlers[handler]) {\n            handlers[handler]();\n          }\n        }\n      }\n    }\n  ]\n});\n\nfunction reloadData() {\n  const list = $(\"list\");\n  list.data = [\n    {\n      rows: [\n        {\n          title: {\n            text: \"Format\"\n          },\n          detail: {\n            text: (() => {\n              for (const format of formats) {\n                if (format.ext === states.format) {\n                  return format.name;\n                }\n              }\n              return \"\";\n            })()\n          },\n          handler: \"selectFormat\",\n          switcher: { hidden: true },\n          spinner: { loading: false }\n        }\n      ]\n    },\n    {\n      rows: [\n        {\n          title: {\n            text: \"Smart Quotes\"\n          },\n          switcher: {\n            info: keys.smart,\n            on: states.smart\n          },\n          detail: { hidden: true },\n          spinner: { loading: false }\n        },\n        {\n          title: {\n            text: \"No Line Wrapping\"\n          },\n          switcher: {\n            info: keys.noWrap,\n            on: states.noWrap\n          },\n          detail: { hidden: true },\n          spinner: { loading: false }\n        },\n        {\n          title: {\n            text: \"Table of Contents\"\n          },\n          switcher: {\n            info: keys.toc,\n            on: states.toc\n          },\n          detail: { hidden: true },\n          spinner: { loading: false }\n        },\n        {\n          title: {\n            text: \"More Options...\"\n          },\n          handler: \"options\",\n          detail: { hidden: true },\n          switcher: { hidden: true },\n          spinner: { loading: false }\n        }\n      ]\n    },\n    {\n      rows: [\n        {\n          title: {\n            text: \"Convert\",\n            textColor: $color(\"tint\"),\n            align: $align.center,\n            hidden: states.loading\n          },\n          spinner: {\n            loading: states.loading\n          },\n          handler: \"convert\",\n          detail: { hidden: true },\n          switcher: { hidden: true }\n        }\n      ]\n    }\n  ];\n}\n\nreloadData();\n\nasync function selectFormat() {\n  const { index } = await $ui.menu(formats.map((x) => `${x.name} (${x.ext})`));\n  states.format = formats[index].ext;\n\n  $cache.set(keys.format, states.format);\n  reloadData();\n}\n\nfunction options() {\n  $ui.push({\n    props: {\n      title: \"More Options\",\n      navButtons: [\n        {\n          title: \"Docs\",\n          handler: () => {\n            $app.openURL(\"https:\/\/www.docverter.com\/api\/\");\n          }\n        }\n      ]\n    },\n    views: [\n      {\n        type: \"text\",\n        props: {\n          type: $kbType.ascii,\n          text: states.options,\n          font: $font(\"Menlo-Regular\", 15),\n          placeholder: \"E.g., --base_header_level=2 --strict\"\n        },\n        layout: $layout.fill,\n        events: {\n          changed: (sender) => {\n            states.options = sender.text;\n            $cache.set(keys.options, sender.text);\n          }\n        }\n      }\n    ]\n  });\n}\n\nasync function convert() {\n  if (states.loading) {\n    return;\n  }\n\n  states.loading = true;\n  reloadData();\n\n  const form = {\n    from: \"markdown\",\n    to: states.format\n  };\n\n  const enableFlag = (flag) => {\n    form[flag] = \"true\";\n  };\n\n  if (states.smart) {\n    enableFlag(\"smart\");\n  }\n\n  if (states.noWrap) {\n    enableFlag(\"no_wrap\");\n  }\n\n  if (states.toc) {\n    enableFlag(\"table_of_contents\");\n  }\n\n  states.options.split(\"--\").forEach((option) => {\n    if (option.length == 0) {\n      return;\n    }\n\n    const pairs = option.split(\"=\");\n    if (pairs.length == 2) {\n      form[pairs[0].trim()] = pairs[1].trim();\n    } else {\n      enableFlag(option.trim());\n    }\n  });\n\n  const result = await $http.upload({\n    url: \"http:\/\/c.docverter.com\/convert\",\n    form,\n    files: [\n      {\n        name: \"input_files[]\",\n        filename: \"file.md\",\n        data: $data({ string: inputText })\n      }\n    ]\n  });\n\n  states.loading = false;\n  reloadData();\n  $actions.finish();\n\n  if (result.response.statusCode != 200) {\n    $ui.alert(`Error: ${result.response.statusCode}, ${result.data.error}`);\n    return;\n  }\n\n  let ext = states.format;\n  if (ext === \"latex\") {\n    ext = \"tex\";\n  } else if (ext === \"asciidoc\") {\n    ext = \"txt\";\n  }\n\n  $share.sheet({\n    name: `${fileName}.${ext}`,\n    data: result.rawData\n  });\n}"
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Docverter",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "printer",
+    "color" : "#E09971"
+  },
+  "clientVersion" : 133
+}
