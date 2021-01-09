@@ -1,9 +1,7 @@
-const iOS = (() => {
-  return [
-    'iPad Simulator', 'iPhone Simulator', 'iPod Simulator',
-    'iPad', 'iPhone', 'iPod',
-  ].includes(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
-})();
+const iOS = [
+  'iPad Simulator', 'iPhone Simulator', 'iPod Simulator',
+  'iPad', 'iPhone', 'iPod',
+].includes(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
 
 localizePageTitle(location.href.indexOf('/#/cn/') !== -1);
 
@@ -69,10 +67,19 @@ window.$docsify = {
             }
 
             if (!iOS) {
-              const span = document.createElement('span');
-              const title = cn ? '二维码' : 'QR Code';
-              span.innerHTML = `&nbsp;&nbsp;<a href='' onclick='event.preventDefault();showQRCode("${name}")'>${title}</a>`;
-              link.parentNode.insertBefore(span, link.nextSibling);
+              const space = document.createElement('span');
+              space.innerHTML = '&nbsp;&nbsp;';
+
+              const a = document.createElement('a');
+              a.href = '';
+              a.textContent = cn ? '二维码' : 'QR Code';
+              a.onclick = event => {
+                event.preventDefault();
+                toggleQRCode(name, link.parentNode.nextSibling);
+              }
+
+              link.parentNode.insertBefore(space, link.nextSibling);
+              space.parentNode.insertBefore(a, space.nextSibling);
             }
           }
         });
@@ -99,14 +106,18 @@ function getActions(name) {
   }
 }
 
-function showQRCode(name) {
-  const url = importURL(repoURL('raw', name));
-  const qrcode = new QRious();
-  qrcode.value = url;
+function toggleQRCode(name, node) {
+  if (node instanceof HTMLImageElement) {
+    node.parentNode.removeChild(node);
+    return;
+  }
 
-  const newTab = window.open();
-  newTab.document.title = url;
-  newTab.document.body.innerHTML = `<img src='${qrcode.toDataURL()}'>`;
+  const qrcode = new QRious();
+  qrcode.value = importURL(repoURL('raw', name));
+
+  const img = document.createElement('img');
+  img.src = qrcode.toDataURL();
+  node.parentNode.insertBefore(img, node);
 }
 
 function localizePageTitle(cn) {
