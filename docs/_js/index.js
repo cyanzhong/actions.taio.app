@@ -62,6 +62,7 @@ window.$docsify = {
           const match = link.href.match(/\/docs\/(.+\.json)/);
           if (match) {
             const name = match[1];
+            link.className = 'rounded_button';
             link.onclick = event => {
               event.preventDefault();
               getActions(name);
@@ -73,12 +74,22 @@ window.$docsify = {
 
               const a = document.createElement('a');
               a.href = '';
-              a.textContent = cn ? '二维码' : 'QR Code';
-              a.onclick = event => {
-                event.preventDefault();
-                toggleQRCode(name, link.parentNode.nextSibling);
+              a.className = 'rounded_button';
+
+              const updateTitle = isHidden => {
+                if (isHidden) {
+                  a.textContent = cn ? '显示二维码' : 'Show QR Code';
+                } else {
+                  a.textContent = cn ? '隐藏二维码' : 'Hide QR Code';
+                }
               }
 
+              a.onclick = event => {
+                event.preventDefault();
+                updateTitle(toggleQRCode(name, link.parentNode.nextSibling));
+              }
+
+              updateTitle(true);
               link.parentNode.insertBefore(space, link.nextSibling);
               space.parentNode.insertBefore(a, space.nextSibling);
             }
@@ -110,7 +121,7 @@ function getActions(name) {
 function toggleQRCode(name, node) {
   if (node instanceof HTMLImageElement) {
     node.parentNode.removeChild(node);
-    return;
+    return true;
   }
 
   const qrcode = new QRious();
@@ -119,6 +130,7 @@ function toggleQRCode(name, node) {
   const img = document.createElement('img');
   img.src = qrcode.toDataURL();
   node.parentNode.insertBefore(img, node);
+  return false;
 }
 
 function localizePageTitle(cn) {

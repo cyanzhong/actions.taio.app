@@ -190,3 +190,16 @@ input {
 pre::after {
   content: "";
 }
+
+.rounded_button {
+  padding: 3px 6px 3px 6px;
+  border: 1px solid #007AFF;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 400 !important;
+  text-decoration: none;
+}
+
+.rounded_button:hover {
+  background-color: #007AFF20;
+}
