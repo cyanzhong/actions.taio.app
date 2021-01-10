@@ -47,8 +47,12 @@ input {
 }
 
 .markdown-section code {
-  color: #ff9500;
-  font-weight: 600;
+  color: #34495e;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #dfe2e5;
 }
 
 .markdown-section blockquote {

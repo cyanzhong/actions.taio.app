@@ -92,8 +92,9 @@ input {
 }
 
 .markdown-section code {
-  color: #ff9f0a;
-  background-color: #1e1e1e;
+  color: #e3e3e3;
+  background-color: #292929;
+  border-color: #404040;
 }
 
 .markdown-section blockquote {

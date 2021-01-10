@@ -6,6 +6,7 @@ const iOS = [
 localizePageTitle(location.href.indexOf('/#/cn/') !== -1);
 
 window.$docsify = {
+  themeColor: '#007AFF',
   alias: {
     '/((?!cn).)*/_sidebar.md': '/_sidebar.md',
     '/((?!cn).)*/_navbar.md': '/_navbar.md',
