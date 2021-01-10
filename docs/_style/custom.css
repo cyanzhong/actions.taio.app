@@ -47,6 +47,7 @@ input {
 }
 
 .markdown-section code {
+  padding: 0.1em 0.3em;
   color: #34495e;
   font-size: 0.9rem;
   border-radius: 3px;
@@ -176,6 +177,7 @@ input {
   background-color: #fafafa;
   color: #34495e;
   font-weight: normal;
+  border: none;
 }
 
 .sequence svg, .flowchart svg, .mermaid svg {
