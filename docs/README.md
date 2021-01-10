@@ -1,4 +1,4 @@
-# Taio Actions
+# Taio Actions Directory
 
 [Actions](https://docs.taio.app/#/actions/basics) directory for the [Taio](https://taio.app) app.
 
