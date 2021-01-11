@@ -7,6 +7,10 @@ kbd {
   border-color: #444444;
 }
 
+img {
+  border-color: #333;
+}
+
 .app-nav li ul {
   background-color: #0c0c0c;
   border: #333333;

@@ -6,6 +6,11 @@ input {
   border-radius: 4px;
 }
 
+img {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+}
+
 .app-nav a {
   font-size: 17px;
 }
