@@ -51,7 +51,7 @@ img {
   border-radius: 4px;
 }
 
-.markdown-section code {
+.markdown-section :not(pre) > code {
   padding: 0.1em 0.3em;
   color: #34495e;
   font-size: 0.9rem;
@@ -59,6 +59,7 @@ img {
   border-width: 1px;
   border-style: solid;
   border-color: #dfe2e5;
+  white-space: nowrap;
 }
 
 .markdown-section blockquote {
@@ -182,7 +183,6 @@ img {
   background-color: #fafafa;
   color: #34495e;
   font-weight: normal;
-  border: none;
 }
 
 .sequence svg, .flowchart svg, .mermaid svg {
