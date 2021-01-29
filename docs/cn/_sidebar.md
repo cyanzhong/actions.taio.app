@@ -4,4 +4,5 @@
   - [文本格式化](cn/format.md)
   - [文档转换](cn/convert.md)
   - [预览](cn/preview.md)
+  - [服务](cn/service.md)
   - [实用工具](cn/utility.md)
