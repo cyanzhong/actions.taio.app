@@ -1,0 +1,21 @@
+{
+  "actions" : [
+    {
+      "type" : "@flow.javascript",
+      "parameters" : {
+        "script" : {
+          "value" : "const instructions = `## 使用指引\n\n- 选择下载好的 \\`*.ttf\\` 字体\n- 允许 Safari 下载一个描述文件\n- 在系统设置中安装该描述文件\n- 在 Taio 的编辑器设置中选择字体\n\n## 提示\n\n安装好的字体也可以被用在其他支持系统字体的应用。需删除字体时，移除描述文件即可。\n\n轻点 \\`安装字体\\` 来开始。`;\n\n$ui.render({\n  props: {\n    title: \"安装字体\"\n  },\n  views: [\n    {\n      type: \"button\",\n      props: {\n        id: \"install-button\",\n        title: \"安装字体\",\n        font: $font(\"medium\", 17),\n        titleColor: $color(\"white\"),\n        bgcolor: $color(\"#007aff\", \"#0a84ff\"),\n        cornerRadius: 10,\n        smoothCorners: true\n      },\n      layout: (make, view) => {\n        make.leading.equalTo(view.super.safeAreaLeading).inset(40);\n        make.trailing.equalTo(view.super.safeAreaTrailing).inset(40);\n        make.bottom.equalTo(view.super.safeAreaBottom).inset(15);\n        make.height.equalTo(44);\n      },\n      events: {\n        tapped: async() => {\n          const data = await $drive.open();\n          if (data) {\n            install(data);\n          } else {\n            $actions.resolve();\n          }\n        }\n      }\n    },\n    {\n      type: \"markdown\",\n      props: {\n        content: instructions\n      },\n      layout: (make, view) => {\n        make.left.top.right.equalTo(0);\n        make.bottom.equalTo($(\"install-button\").top).offset(-15);\n      }\n    }\n  ]\n});\n\nfunction install(data) {\n  const name = data.fileName;\n  const type = name.split(\".\").pop().toLowerCase();\n  if (type !== \"ttf\" && type !== \"otf\") {\n    alert(\"请选择 ttf 或 otf 格式的字体。\");\n    return;\n  }\n\n  const title = name.replace(\/\\.[^\/.]+$\/, \"\");\n  const uuid = uuidv4();\n  startServer(`\n  <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n  <!DOCTYPE plist PUBLIC \"-\/\/Apple\/\/DTD PLIST 1.0\/\/EN\" \"http:\/\/www.apple.com\/DTDs\/PropertyList-1.0.dtd\">\n  <plist version=\"1.0\">\n  <dict>\n    <key>PayloadContent<\/key>\n    <array>\n      <dict>\n        <key>Font<\/key>\n        <data>${$text.base64Encode(data)}<\/data>\n        <key>PayloadIdentifier<\/key>\n        <string>app.taio.font.${uuid}<\/string>\n        <key>PayloadOrganization<\/key>\n        <string>https:\/\/taio.app<\/string>\n        <key>PayloadType<\/key>\n        <string>com.apple.font<\/string>\n        <key>PayloadUUID<\/key>\n        <string>${uuid}<\/string>\n        <key>PayloadVersion<\/key>\n        <integer>1<\/integer>\n      <\/dict>\n    <\/array>\n    <key>PayloadDescription<\/key>\n    <string>${title}<\/string>\n    <key>PayloadDisplayName<\/key>\n    <string>${title}<\/string>\n    <key>PayloadIdentifier<\/key>\n    <string>app.taio.font.${uuid}<\/string>\n    <key>PayloadOrganization<\/key>\n    <string>https:\/\/taio.app<\/string>\n    <key>PayloadRemovalDisallowed<\/key>\n    <false\/>\n    <key>PayloadType<\/key>\n    <string>Configuration<\/string>\n    <key>PayloadUUID<\/key>\n    <string>${uuid}<\/string>\n    <key>PayloadVersion<\/key>\n    <integer>1<\/integer>\n  <\/dict>\n  <\/plist>`);\n}\n\nfunction startServer(plist) {\n  const port = 4399;\n  const server = $server.new();\n  server.listen({\n    didStart: () => {\n      $app.openURL(`http:\/\/localhost:${port}`);\n    }\n  });\n\n  server.addHandler({\n    response: () => {\n      return {\n        type: \"data\",\n        props: {\n          contentType: \"application\/x-apple-aspen-config\",\n          text: plist\n        }\n      }\n    }\n  });\n\n  server.start({ port });\n  $actions.resolve();\n}\n\nfunction uuidv4() {\n  return \"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx\".replace(\/[xy]\/g, c => {\n    const r = Math.random() * 16 | 0, v = c == \"x\" ? r : (r & 0x3 | 0x8);\n    return v.toString(16).toUpperCase();\n  });\n}"
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "安装字体",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "textformat",
+    "color" : "#3FA1F8"
+  },
+  "clientVersion" : 2
+}

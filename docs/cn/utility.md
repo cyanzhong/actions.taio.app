@@ -1,3 +1,9 @@
+## 安装字体
+
+<a href='/docs/cn/actions/utility/install-font.json'>获取动作</a>
+
+安装下载好的字体到系统，让类似 Taio 的应用可以在编辑器中使用。(by [Taio 团队](https://taio.app/cn/))
+
 ## 清除剪贴板
 
 <a href='/docs/cn/actions/builtin/clear-clipboard.json'>获取动作</a>

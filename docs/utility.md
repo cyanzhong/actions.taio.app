@@ -1,3 +1,9 @@
+## Install Font
+
+<a href='/docs/actions/utility/install-font.json'>Get Actions</a>
+
+Install downloaded fonts to the system so that apps like Taio can use them in the editor. (by [Taio Team](https://taio.app))
+
 ## Clear Clipboard
 
 <a href='/docs/actions/builtin/clear-clipboard.json'>Get Actions</a>
