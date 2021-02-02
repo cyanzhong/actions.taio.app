@@ -51,7 +51,7 @@ img {
   border-radius: 4px;
 }
 
-.markdown-section code {
+.markdown-section :not(pre) > code {
   padding: 0.1em 0.3em;
   color: #34495e;
   font-size: 0.9rem;

@@ -95,7 +95,7 @@ input {
   color: #c5e2ff;
 }
 
-.markdown-section code {
+.markdown-section :not(pre) > code {
   color: #e3e3e3;
   background-color: #292929;
   border-color: #404040;
