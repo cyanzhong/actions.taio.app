@@ -1,6 +1,6 @@
 ## Wi-Fi 文件传输
 
-<a href='/docs/cn/actions/utility/wifi-transfer.json'>Get Actions</a>
+<a href='/docs/cn/actions/utility/wifi-transfer.json'>获取动作</a>
 
 使用 Wi-Fi 传输文件。(by [Taio 团队](https://taio.app/cn/))
 
