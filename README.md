@@ -14,6 +14,8 @@ If you have created some awesome actions for Taio, and wanted to share with the 
 
 We are building an in-app workflow for this as well, which can significantly save the effort in future.
 
+Thanks for the contribution!
+
 ## Contact Us
 
 Feel free to reach us out:
