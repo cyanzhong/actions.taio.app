@@ -1,0 +1,21 @@
+{
+  "actions" : [
+    {
+      "type" : "@flow.javascript",
+      "parameters" : {
+        "script" : {
+          "value" : "const title = \"Wi-Fi Transfer\";\nconst paths = {\n  local: (() => {\n    $defc(\"NSSearchPathForDirectoriesInDomains\", \"NSArray, NSInteger, NSInteger, BOOL\");\n    const paths = NSSearchPathForDirectoriesInDomains(9, 1, true);\n    return paths.jsValue()[0];\n  })(),\n  cloud: (() => {\n    const manager = $objc(\"NSFileManager\").$defaultManager();\n    const url = manager.$URLForUbiquityContainerIdentifier(null).$URLByAppendingPathComponent(\"Documents\");\n    return url.$path().jsValue();\n  })()\n};\n\n$ui.render({\n  props: { title },\n  views: [\n    {\n      type: \"list\",\n      props: {\n        data: [\n          \"Local Folder\",\n          \"iCloud Folder\"\n        ]\n      },\n      layout: $layout.fill,\n      events: {\n        didSelect: (_, indexPath, name) => {\n          if (indexPath.row === 0) {\n            startServer(paths.local, name);\n          } else {\n            startServer(paths.cloud, name);\n          }\n        }\n      }\n    }\n  ]\n});\n\nasync function startServer(path, name) {\n  const {success, url} = await $http.startServer({\n    path: `${path}\/Editor`,\n    port: 5588\n  });\n\n  if (success) {\n    $ui.push({\n      props: { title },\n      views: [\n        {\n          type: \"button\",\n          props: {\n            id: \"stop-button\",\n            title: \"Stop Running\",\n            font: $font(\"medium\", 17),\n            titleColor: $color(\"white\"),\n            bgcolor: $color(\"#007aff\", \"#0a84ff\"),\n            cornerRadius: 10,\n            smoothCorners: true\n          },\n          layout: (make, view) => {\n            make.leading.equalTo(view.super.safeAreaLeading).inset(40);\n            make.trailing.equalTo(view.super.safeAreaTrailing).inset(40);\n            make.bottom.equalTo(view.super.safeAreaBottom).inset(15);\n            make.height.equalTo(44);\n          },\n          events: {\n            tapped: () => $ui.pop()\n          }\n        },\n        {\n          type: \"markdown\",\n          props: {\n            content: `## Info\\n\\nLaunched server for \\`${name}\\`.\\n\\nTo manage files, open ${url} on your computer's browser.\\n\\n## Tips\\n\\n- Make sure to use the same Wi-Fi\\n- Operations cannot be undone`\n          },\n          layout: make => {\n            make.left.top.right.equalTo(0);\n            make.bottom.equalTo($(\"stop-button\").top).offset(-15);\n          }\n        }\n      ],\n      events: {\n        dealloc: () => $http.stopServer()\n      }\n    });\n  } else {\n    $ui.alert(\"Failed to launch web server.\");\n  }\n}\n\n$actions.resolve();"
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Wi-Fi Transfer",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "wifi",
+    "color" : "#10ADC0"
+  },
+  "clientVersion" : 200
+}

@@ -1,3 +1,9 @@
+## Wi-Fi Transfer
+
+<a href='/docs/actions/utility/wifi-transfer.json'>Get Actions</a>
+
+Transfer files using Wi-Fi. (by [Taio Team](https://taio.app))
+
 ## Install Font
 
 <a href='/docs/actions/utility/install-font.json'>Get Actions</a>
