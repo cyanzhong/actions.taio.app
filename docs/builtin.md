@@ -4,6 +4,18 @@
 
 Detect text in images by selecting photos or scanning documents. (by [Taio Team](https://taio.app))
 
+## Wi-Fi Transfer
+
+<a href='/docs/actions/utility/wifi-transfer.json'>Get Actions</a>
+
+Transfer files using Wi-Fi. (by [Taio Team](https://taio.app))
+
+## Install Font
+
+<a href='/docs/actions/utility/install-font.json'>Get Actions</a>
+
+Install downloaded fonts to the system so that apps like Taio can use them in the editor. (by [Taio Team](https://taio.app))
+
 ## Universal Search
 
 <a href='/docs/actions/builtin/universal-search.json'>Get Actions</a>

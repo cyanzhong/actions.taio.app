@@ -4,6 +4,18 @@
 
 通过选择照片或扫描文档识别图片中的文本。(by [Taio 团队](https://taio.app/cn/))
 
+## Wi-Fi 文件传输
+
+<a href='/docs/cn/actions/utility/wifi-transfer.json'>获取动作</a>
+
+使用 Wi-Fi 传输文件。(by [Taio 团队](https://taio.app/cn/))
+
+## 安装字体
+
+<a href='/docs/cn/actions/utility/install-font.json'>获取动作</a>
+
+安装下载好的字体到系统，让类似 Taio 的应用可以在编辑器中使用。(by [Taio 团队](https://taio.app/cn/))
+
 ## 综合搜索
 
 <a href='/docs/cn/actions/builtin/universal-search.json'>获取动作</a>
