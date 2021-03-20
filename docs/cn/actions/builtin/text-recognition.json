@@ -1,0 +1,243 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "通过选择照片或扫描文档识别图片中的文本，检测到的文本可被复制或插入到编辑区域。"
+        }
+      }
+    },
+    {
+      "type" : "@util.ocr",
+      "parameters" : {
+        "source" : 0,
+        "correction" : false,
+        "languages" : [
+          "zh-Hans",
+          "en-US"
+        ],
+        "customWords" : {
+          "value" : ""
+        }
+      }
+    },
+    {
+      "type" : "@ui.text-input",
+      "parameters" : {
+        "prompt" : {
+          "value" : "识别到的内容"
+        },
+        "keyboardType" : 0,
+        "initialText" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "singleLineText" : false
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Result"
+        }
+      }
+    },
+    {
+      "type" : "@ui.alert",
+      "parameters" : {
+        "showCancelButton" : true,
+        "message" : {
+          "value" : ""
+        },
+        "title" : {
+          "value" : "处理结果"
+        },
+        "actions" : [
+          {
+            "title" : {
+              "value" : "复制文本"
+            },
+            "value" : {
+              "value" : "0"
+            }
+          },
+          {
+            "title" : {
+              "value" : "分享文本"
+            },
+            "value" : {
+              "value" : "1"
+            }
+          },
+          {
+            "title" : {
+              "value" : "插入到编辑器"
+            },
+            "value" : {
+              "value" : "2"
+            }
+          },
+          {
+            "title" : {
+              "value" : ""
+            },
+            "value" : {
+              "value" : "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Option"
+        }
+      }
+    },
+    {
+      "type" : "@flow.if",
+      "parameters" : {
+        "blockIdentifier" : "D700C895-8AF1-4DBE-B62F-0046A9713037",
+        "condition" : 0,
+        "rhs" : {
+          "value" : "0"
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Option"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@util.set-clipboard",
+      "parameters" : {
+        "localOnly" : false,
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Result"
+            }
+          ]
+        },
+        "expireAfter" : {
+          "value" : "0"
+        }
+      }
+    },
+    {
+      "type" : "@flow.else",
+      "parameters" : {
+        "blockIdentifier" : "D700C895-8AF1-4DBE-B62F-0046A9713037"
+      }
+    },
+    {
+      "type" : "@flow.if",
+      "parameters" : {
+        "blockIdentifier" : "E15CC564-EF7F-4281-A8CB-49FD270F7312",
+        "condition" : 0,
+        "rhs" : {
+          "value" : "1"
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Option"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@share.sheet",
+      "parameters" : {
+        "mode" : 0,
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Result"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.else",
+      "parameters" : {
+        "blockIdentifier" : "E15CC564-EF7F-4281-A8CB-49FD270F7312"
+      }
+    },
+    {
+      "type" : "@editor.replace-selected",
+      "parameters" : {
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Result"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.endif",
+      "parameters" : {
+        "blockIdentifier" : "E15CC564-EF7F-4281-A8CB-49FD270F7312"
+      }
+    },
+    {
+      "type" : "@flow.endif",
+      "parameters" : {
+        "blockIdentifier" : "D700C895-8AF1-4DBE-B62F-0046A9713037"
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "文本识别",
+  "clientMinVersion" : 272,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "doc.text.viewfinder",
+    "color" : "#3FA1F8"
+  },
+  "clientVersion" : 271
+}

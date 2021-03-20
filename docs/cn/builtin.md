@@ -1,3 +1,9 @@
+## 文本识别
+
+<a href='/docs/cn/actions/builtin/text-recognition.json'>获取动作</a>
+
+通过选择照片或扫描文档识别图片中的文本。(by [Taio 团队](https://taio.app/cn/))
+
 ## 综合搜索
 
 <a href='/docs/cn/actions/builtin/universal-search.json'>获取动作</a>

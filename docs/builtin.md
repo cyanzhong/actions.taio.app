@@ -1,3 +1,9 @@
+## Text Recognition
+
+<a href='/docs/actions/builtin/text-recognition.json'>Get Actions</a>
+
+Detect text in images by selecting photos or scanning documents. (by [Taio Team](https://taio.app))
+
 ## Universal Search
 
 <a href='/docs/actions/builtin/universal-search.json'>Get Actions</a>

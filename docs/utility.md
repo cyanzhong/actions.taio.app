@@ -1,3 +1,9 @@
+## Text Recognition
+
+<a href='/docs/actions/builtin/text-recognition.json'>Get Actions</a>
+
+Detect text in images by selecting photos or scanning documents. (by [Taio Team](https://taio.app))
+
 ## Wi-Fi Transfer
 
 <a href='/docs/actions/utility/wifi-transfer.json'>Get Actions</a>
