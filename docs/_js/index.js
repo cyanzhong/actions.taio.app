@@ -1,7 +1,10 @@
-const iOS = [
+const iOSDevice = [
   'iPad Simulator', 'iPhone Simulator', 'iPod Simulator',
   'iPad', 'iPhone', 'iPod',
 ].includes(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+
+const MacDevice = navigator.platform.indexOf('Mac') > -1;
+const AppleDevice = iOSDevice || MacDevice;
 
 localizePageTitle(location.href.indexOf('/#/cn/') !== -1);
 
@@ -68,7 +71,7 @@ window.$docsify = {
               getActions(name);
             }
 
-            if (!iOS) {
+            if (!iOSDevice) {
               const space = document.createElement('span');
               space.innerHTML = '&nbsp;&nbsp;';
 
@@ -109,9 +112,9 @@ function importURL(url) {
 }
 
 function getActions(name) {
-  const type = iOS ? 'raw' : 'blob';
+  const type = AppleDevice ? 'raw' : 'blob';
   const url = repoURL(type, name);
-  if (iOS) {
+  if (AppleDevice) {
     window.location = importURL(url);
   } else {
     window.open(url);
