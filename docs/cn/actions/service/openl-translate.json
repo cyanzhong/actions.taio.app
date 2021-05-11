@@ -1,0 +1,543 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "欢迎使用 OpenL Taio 插件！\n\n官网：https:\/\/openl.club\n文档链接：https:\/\/docs.openl.club\n当前版本：v1.0.0\n\n———\n\n请输入要使用的翻译服务简称，当前可用服务如下：\n\n翻译服务\t简称\nDeepL\tdeepl\n有道翻译\tyoudao\n腾讯翻译君\ttencent\n阿里翻译\taliyun\n百度翻译\tbaidu\n彩云小译\tcaiyun\n微信翻译\twechat\n搜狗翻译\tsogou\nAzure 翻译\t\tazure\nIBM Watson\tibm\nAmazon 翻译\taws\nGoogle 翻译\tgoogle\n\n默认使用 DeepL\n\n使用前请先输入您的 API 密钥以及设置翻译服务\n\n"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "92f9d24a-908f-4183-be1f-a61eb4ba17b0"
+        },
+        "name" : {
+          "value" : "apikey"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "deepl"
+        },
+        "name" : {
+          "value" : "service"
+        }
+      }
+    },
+    {
+      "type" : "@flow.if",
+      "parameters" : {
+        "blockIdentifier" : "77C102C2-585E-4F3F-808E-70DA8AF5B7EE",
+        "condition" : 0,
+        "rhs" : {
+          "value" : ""
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "apikey"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@ui.alert",
+      "parameters" : {
+        "showCancelButton" : false,
+        "message" : {
+          "value" : "未填写 API 密钥"
+        },
+        "title" : {
+          "value" : "错误"
+        },
+        "actions" : [
+          {
+            "title" : {
+              "value" : "确定"
+            },
+            "value" : {
+              "value" : "0"
+            }
+          },
+          {
+            "title" : {
+              "value" : ""
+            },
+            "value" : {
+              "value" : "1"
+            }
+          },
+          {
+            "title" : {
+              "value" : ""
+            },
+            "value" : {
+              "value" : "2"
+            }
+          },
+          {
+            "title" : {
+              "value" : ""
+            },
+            "value" : {
+              "value" : "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type" : "@flow.finish"
+    },
+    {
+      "type" : "@flow.else",
+      "parameters" : {
+        "blockIdentifier" : "77C102C2-585E-4F3F-808E-70DA8AF5B7EE"
+      }
+    },
+    {
+      "type" : "@flow.endif",
+      "parameters" : {
+        "blockIdentifier" : "77C102C2-585E-4F3F-808E-70DA8AF5B7EE"
+      }
+    },
+    {
+      "type" : "@flow.if",
+      "parameters" : {
+        "blockIdentifier" : "A78A6BE0-3C18-4B8F-B67A-A23E07F80DF4",
+        "condition" : 0,
+        "rhs" : {
+          "value" : ""
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "service"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@ui.alert",
+      "parameters" : {
+        "showCancelButton" : false,
+        "message" : {
+          "value" : "未配置翻译服务"
+        },
+        "title" : {
+          "value" : "错误"
+        },
+        "actions" : [
+          {
+            "title" : {
+              "value" : "确定"
+            },
+            "value" : {
+              "value" : "0"
+            }
+          },
+          {
+            "title" : {
+              "value" : ""
+            },
+            "value" : {
+              "value" : "1"
+            }
+          },
+          {
+            "title" : {
+              "value" : ""
+            },
+            "value" : {
+              "value" : "2"
+            }
+          },
+          {
+            "title" : {
+              "value" : ""
+            },
+            "value" : {
+              "value" : "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type" : "@flow.finish"
+    },
+    {
+      "type" : "@flow.else",
+      "parameters" : {
+        "blockIdentifier" : "A78A6BE0-3C18-4B8F-B67A-A23E07F80DF4"
+      }
+    },
+    {
+      "type" : "@flow.endif",
+      "parameters" : {
+        "blockIdentifier" : "A78A6BE0-3C18-4B8F-B67A-A23E07F80DF4"
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.selection-text"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "selectedText"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@editor.full-text"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "fullText"
+        }
+      }
+    },
+    {
+      "type" : "@flow.if",
+      "parameters" : {
+        "blockIdentifier" : "B1560CE0-BD40-44BF-B9FD-248F2069E12F",
+        "condition" : 0,
+        "rhs" : {
+          "value" : ""
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "fullText"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@ui.menu",
+      "parameters" : {
+        "prompt" : {
+          "value" : "文本来源"
+        },
+        "selectAllByDefault" : false,
+        "multiValue" : false,
+        "lines" : {
+          "value" : "剪贴板\n手动输入"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "inputSource"
+        }
+      }
+    },
+    {
+      "type" : "@flow.if",
+      "parameters" : {
+        "blockIdentifier" : "D1CE26C5-A7B6-4A4E-9B6E-F1546E325153",
+        "condition" : 0,
+        "rhs" : {
+          "value" : "剪贴板"
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "inputSource"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@clipboard.text"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "fullText"
+        }
+      }
+    },
+    {
+      "type" : "@flow.else",
+      "parameters" : {
+        "blockIdentifier" : "D1CE26C5-A7B6-4A4E-9B6E-F1546E325153"
+      }
+    },
+    {
+      "type" : "@flow.if",
+      "parameters" : {
+        "blockIdentifier" : "8F1D0FE7-27C4-4458-BB44-1BFBD08544C1",
+        "condition" : 0,
+        "rhs" : {
+          "value" : "手动输入"
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "inputSource"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@ui.text-input",
+      "parameters" : {
+        "prompt" : {
+          "value" : "请输入内容"
+        },
+        "keyboardType" : 0,
+        "initialText" : {
+          "value" : ""
+        },
+        "singleLineText" : false
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "fullText"
+        }
+      }
+    },
+    {
+      "type" : "@flow.if",
+      "parameters" : {
+        "blockIdentifier" : "6B6877CB-BA5E-452D-A9F4-B8A984540BED",
+        "condition" : 0,
+        "rhs" : {
+          "value" : ""
+        },
+        "lhs" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "fullText"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@ui.alert",
+      "parameters" : {
+        "showCancelButton" : false,
+        "message" : {
+          "value" : "没有发现待翻译的内容"
+        },
+        "title" : {
+          "value" : "错误"
+        },
+        "actions" : [
+          {
+            "title" : {
+              "value" : "确定"
+            },
+            "value" : {
+              "value" : "0"
+            }
+          },
+          {
+            "title" : {
+              "value" : ""
+            },
+            "value" : {
+              "value" : "1"
+            }
+          },
+          {
+            "title" : {
+              "value" : ""
+            },
+            "value" : {
+              "value" : "2"
+            }
+          },
+          {
+            "title" : {
+              "value" : ""
+            },
+            "value" : {
+              "value" : "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type" : "@flow.finish"
+    },
+    {
+      "type" : "@flow.else",
+      "parameters" : {
+        "blockIdentifier" : "6B6877CB-BA5E-452D-A9F4-B8A984540BED"
+      }
+    },
+    {
+      "type" : "@flow.endif",
+      "parameters" : {
+        "blockIdentifier" : "6B6877CB-BA5E-452D-A9F4-B8A984540BED"
+      }
+    },
+    {
+      "type" : "@flow.else",
+      "parameters" : {
+        "blockIdentifier" : "8F1D0FE7-27C4-4458-BB44-1BFBD08544C1"
+      }
+    },
+    {
+      "type" : "@flow.endif",
+      "parameters" : {
+        "blockIdentifier" : "8F1D0FE7-27C4-4458-BB44-1BFBD08544C1"
+      }
+    },
+    {
+      "type" : "@flow.endif",
+      "parameters" : {
+        "blockIdentifier" : "D1CE26C5-A7B6-4A4E-9B6E-F1546E325153"
+      }
+    },
+    {
+      "type" : "@flow.else",
+      "parameters" : {
+        "blockIdentifier" : "B1560CE0-BD40-44BF-B9FD-248F2069E12F"
+      }
+    },
+    {
+      "type" : "@flow.endif",
+      "parameters" : {
+        "blockIdentifier" : "B1560CE0-BD40-44BF-B9FD-248F2069E12F"
+      }
+    },
+    {
+      "type" : "@ui.menu",
+      "parameters" : {
+        "prompt" : {
+          "value" : "请选择目标语言"
+        },
+        "selectAllByDefault" : false,
+        "multiValue" : false,
+        "lines" : {
+          "value" : "中文\n英语\n德语\n法语\n意大利语\n日语\n西班牙语\n荷兰语\n波兰语\n葡萄牙语\n俄语"
+        }
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "targetLanguage"
+        }
+      }
+    },
+    {
+      "type" : "@flow.javascript",
+      "parameters" : {
+        "script" : {
+          "value" : "'use strict';\n\nconst text = getText();\nconst apikey = $actions.getVar('apikey');\nconst service = $actions.getVar('service')\n\nasync function main() {\n  $ui.loading(true);\n\n  if (!apikey) {\n    throw new Error('请先设置您的 API 密钥');\n  }\n\n  if (!service) {\n    throw new Error('请先设置翻译服务');\n  }\n\n  if (!text) {\n    throw new Error('待翻译文本为空');\n  }\n\n  const url = `https:\/\/api.openl.club\/services\/${service}\/translate`;\n  const result = await new Promise((resolve, reject) => {\n    $http\n      .request({\n        method: 'POST',\n        url: url,\n        body: {\n          apikey: apikey,\n          text: text,\n          target_lang: getTargetLanguage(),\n        },\n        showProgress: true,\n      })\n      .then(({ data, response, error }) => {\n        if (error) {\n          if (response.statusCode) {\n            const code = response.statusCode;\n\n            if (code < 500) {\n              reject(new Error(`错误 ${code}: 构造请求失败`));\n            } else {\n              reject(new Error(`错误 ${code}: 服务器错误`));\n            }\n          } else {\n            reject(new Error(`错误: 发送请求失败`));\n          }\n\n          return;\n        }\n\n        const status = data.status;\n        if (status === true) {\n          const result = data.result;\n          resolve(result);\n        } else {\n          reject(new Error(data.msg));\n        }\n      });\n  });\n\n  $ui.loading(false);\n\n  $actions.resolve(result);\n}\n\nfunction getTargetLanguage() {\n  switch ($actions.getVar('targetLanguage')) {\n    case '中文':\n      return 'zh';\n    case '英语':\n      return 'en';\n    case '德语':\n      return 'de';\n    case '法语':\n      return 'fr';\n    case '意大利语':\n      return 'it';\n    case '日语':\n      return 'ja';\n    case '西班牙语':\n      return 'es';\n    case '荷兰语':\n      return 'nl';\n    case '波兰语':\n      return 'pl';\n    case '葡萄牙语':\n      return 'pt';\n    case '俄语':\n      return 'ru';\n  }\n}\n\nfunction getText() {\n  if ($actions.getVar('selectedText')) return $actions.getVar('selectedText').trim();\n  return $actions.getVar('fullText').trim();\n}\n\nmain()\n  .catch((err) => {\n    $ui.loading(false);\n    $actions.reject(err.message);\n  })\n  .finally(() => {\n    $ui.loading(false);\n  });\n"
+        }
+      }
+    },
+    {
+      "type" : "@ui.render-text",
+      "parameters" : {
+        "title" : {
+          "value" : "翻译结果"
+        },
+        "fullScreen" : true,
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "OpenL 翻译",
+  "clientMinVersion" : 1,
+  "summary" : "欢迎使用 OpenL Taio 插件！\n\n官网：https:\/\/openl.club\n文档链接：https:\/\/docs.openl.club\n当前版本：v1.0.0",
+  "icon" : {
+    "glyph" : "t.bubble",
+    "color" : "#A777FF"
+  },
+  "clientVersion" : 66
+}
