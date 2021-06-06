@@ -340,6 +340,7 @@ body.sticky .sidebar-toggle {
   border: 1px solid #ddd;
   font-weight: bold;
   padding: 6px 13px;
+  background-color: #f8f8f8;
 }
 .markdown-section td {
   border: 1px solid #ddd;
