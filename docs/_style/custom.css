@@ -47,6 +47,10 @@ img {
   opacity: 1;
 }
 
+.sidebar-nav {
+  margin-bottom: 80px;
+}
+
 .markdown-section pre {
   border-radius: 4px;
 }
