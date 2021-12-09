@@ -1,6 +1,6 @@
 ## tldraw
 
-<a href='/docs/cn/actions/builtin/tldraw.json'>获取动作</a>
+<a href='/docs/cn/actions/utility/tldraw.json'>获取动作</a>
 
 在 Taio 编辑器使用 [tldraw](https://tldraw.com) 绘图。(by [Taio 团队](https://taio.app/cn/))
 

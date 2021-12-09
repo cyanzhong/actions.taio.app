@@ -1,6 +1,6 @@
 ## tldraw
 
-<a href='/docs/actions/builtin/tldraw.json'>Get Actions</a>
+<a href='/docs/actions/utility/tldraw.json'>Get Actions</a>
 
 [tldraw](https://tldraw.com) extension for Taio. (by [Taio Team](https://taio.app))
 
