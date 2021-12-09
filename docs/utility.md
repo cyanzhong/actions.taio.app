@@ -1,3 +1,9 @@
+## tldraw
+
+<a href='/docs/actions/builtin/tldraw.json'>Get Actions</a>
+
+[tldraw](https://tldraw.com) extension for Taio. (by [Taio Team](https://taio.app))
+
 ## Text Recognition
 
 <a href='/docs/actions/builtin/text-recognition.json'>Get Actions</a>
