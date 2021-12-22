@@ -208,7 +208,7 @@
         "blockIdentifier" : "A353CE67-C62F-40FD-9619-FE480E9B9FC1",
         "condition" : 0,
         "rhs" : {
-          "value" : "{\"code\":0,\"message\":\"\\u8bb0\\u5f55\\u6210\\u529f\"}"
+          "value" : "{\"code\":0,\"message\":\"\\u5df2\\u8bb0\\u5f55\""
         },
         "lhs" : {
           "value" : "$",
