@@ -1,0 +1,35 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "Translate text using system built-in services."
+        }
+      }
+    },
+    {
+      "type" : "@util.translate",
+      "parameters" : {
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@clipboard.text"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Translate",
+  "clientMinVersion" : 624,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "doc.text.magnifyingglass",
+    "color" : "#FB6666"
+  },
+  "clientVersion" : 624
+}

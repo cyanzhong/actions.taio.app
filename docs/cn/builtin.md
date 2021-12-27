@@ -1,3 +1,9 @@
+## 翻译文本
+
+<a href='/docs/cn/actions/builtin/translate.json'>获取动作</a>
+
+使用系统自带服务翻译文本。(by [Taio 团队](https://taio.app/cn/))
+
 ## 文本识别
 
 <a href='/docs/cn/actions/builtin/text-recognition.json'>获取动作</a>

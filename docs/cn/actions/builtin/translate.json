@@ -1,0 +1,35 @@
+{
+  "actions" : [
+    {
+      "type" : "@comment",
+      "parameters" : {
+        "text" : {
+          "value" : "使用系统自带服务翻译文本。"
+        }
+      }
+    },
+    {
+      "type" : "@util.translate",
+      "parameters" : {
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@clipboard.text"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "翻译文本",
+  "clientMinVersion" : 624,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "doc.text.magnifyingglass",
+    "color" : "#FB6666"
+  },
+  "clientVersion" : 624
+}

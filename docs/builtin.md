@@ -1,3 +1,9 @@
+## Translate
+
+<a href='/docs/actions/builtin/translate.json'>Get Actions</a>
+
+Translate text using system built-in services. (by [Taio Team](https://taio.app))
+
 ## Text Recognition
 
 <a href='/docs/actions/builtin/text-recognition.json'>Get Actions</a>
