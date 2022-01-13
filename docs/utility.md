@@ -1,3 +1,9 @@
+## Remove Extra Spaces
+
+<a href='/docs/actions/utility/remove-extra-spaces.json'>Get Actions</a>
+
+Select a clipping, remove extra spaces and empty lines. (by [Taio Team](https://taio.app))
+
 ## Translate
 
 <a href='/docs/actions/builtin/translate.json'>Get Actions</a>

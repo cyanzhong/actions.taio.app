@@ -1,0 +1,110 @@
+{
+  "actions" : [
+    {
+      "type" : "@util.get-clipboard",
+      "parameters" : {
+        "mode" : 0
+      }
+    },
+    {
+      "type" : "@flow.set-variable",
+      "parameters" : {
+        "value" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "name" : {
+          "value" : "Clipping"
+        }
+      }
+    },
+    {
+      "type" : "@text.replace",
+      "parameters" : {
+        "mode" : 2,
+        "pattern" : {
+          "value" : "\\s+"
+        },
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "replacement" : {
+          "value" : " "
+        }
+      }
+    },
+    {
+      "type" : "@text.trim",
+      "parameters" : {
+        "mode" : 0,
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@text.trim",
+      "parameters" : {
+        "mode" : 1,
+        "text" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type" : "@clips.replace",
+      "parameters" : {
+        "value2" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "@input"
+            }
+          ]
+        },
+        "value1" : {
+          "value" : "$",
+          "tokens" : [
+            {
+              "location" : 0,
+              "value" : "Clipping"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "buildVersion" : 1,
+  "name" : "Remove Extra Spaces",
+  "clientMinVersion" : 1,
+  "summary" : "",
+  "icon" : {
+    "glyph" : "wand.and.stars",
+    "color" : "#FE824B"
+  },
+  "clientVersion" : 685
+}

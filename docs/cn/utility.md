@@ -1,3 +1,9 @@
+## 移除多余空白
+
+<a href='/docs/cn/actions/utility/remove-extra-spaces.json'>获取动作</a>
+
+选中剪贴内容，移除多余的空格和空行。(by [Taio 团队](https://taio.app/cn/))
+
 ## 翻译文本
 
 <a href='/docs/cn/actions/builtin/translate.json'>获取动作</a>
