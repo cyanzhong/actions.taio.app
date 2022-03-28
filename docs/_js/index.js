@@ -63,9 +63,10 @@ window.$docsify = {
 
         const links = document.querySelectorAll('a');
         links.forEach(link => {
-          const match = link.href.match(/\/docs\/(.+\.json)/);
+          const href = link.href;
+          const match = href.match(/\/docs\/(.+\.json)/) || href.match(/\/cyanzhong\/(.+\.json)/);
           if (match) {
-            const name = match[1];
+            const name = href.includes("cyanzhong") ? href : match[1];
             link.className = 'rounded_button';
             link.onclick = event => {
               event.preventDefault();
@@ -105,6 +106,9 @@ window.$docsify = {
 };
 
 function repoURL(type, name) {
+  if (name.includes("cyanzhong")) {
+    return name;
+  }
   return `https://github.com/cyanzhong/actions.taio.app/${type}/master/docs/${name}`;
 }
 
