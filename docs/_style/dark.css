@@ -21,6 +21,10 @@ img {
   border-bottom-color: rgba(255, 255, 255, 0.07) !important;
 }
 
+.search input {
+  color: #e3e3e3;
+}
+
 .docsify-pagination-container {
   border-top-color: rgba(255, 255, 255, 0.07) !important;
 }
