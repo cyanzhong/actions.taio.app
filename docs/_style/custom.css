@@ -11,6 +11,10 @@ img {
   border-radius: 4px;
 }
 
+h2 > a.anchor {
+  margin-top: 12px;
+}
+
 .app-nav a {
   font-size: 17px;
 }
