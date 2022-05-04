@@ -4,4 +4,5 @@
   - [Text Formatting](format.md)
   - [Document Conversion](convert.md)
   - [Preview](preview.md)
+  - [Service](service.md)
   - [Utility](utility.md)
