@@ -1,3 +1,9 @@
+## TaioCC
+
+<a href='https://github.com/cyanzhong/TaioCC/raw/main/dist/taiocc-en.json'>Get Actions</a>
+
+Chinese Converter for Taio, based on [OpenCC](https://github.com/BYVoid/OpenCC). (by [Taio Team](https://taio.app))
+
 ## Image Uploader
 
 <a href='https://github.com/cyanzhong/Image-Uploader/raw/main/dist/image-uploader-en.json'>Get Actions</a>

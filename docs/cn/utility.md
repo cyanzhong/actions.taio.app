@@ -1,3 +1,9 @@
+## TaioCC
+
+<a href='https://github.com/cyanzhong/TaioCC/raw/main/dist/taiocc-zh-Hans.json'>获取动作</a>
+
+为 Taio 设计的繁简转换工具，基于 [OpenCC](https://github.com/BYVoid/OpenCC)。(by [Taio 团队](https://taio.app/cn/))
+
 ## 图片上传
 
 <a href='https://github.com/cyanzhong/Image-Uploader/raw/main/dist/image-uploader-zh-Hans.json'>获取动作</a>
